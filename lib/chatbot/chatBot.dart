@@ -55,7 +55,7 @@ class _TextOnlyState extends State<TextOnly> {
   bool loading = false;
   List textChat = [];
   List textWithImageChat = [];
-  String history = 'you are Healthcare assistant chatbot named Aybala. Your goal is to help patients to find the right healthcare branch for their specific needs. Tell them "Please share your health conditions or symptoms, and we will guide you to the most suitable place for assistance."';
+  String history = 'you are Healthcare assistant chatbot named Gemini. Your goal is to help patients to find the right healthcare branch for their specific needs. Tell them "Please share your health conditions or symptoms, and we will guide you to the most suitable place for assistance."';
   // this helps us to create a memory for gemini
 
 
@@ -96,7 +96,7 @@ class _TextOnlyState extends State<TextOnly> {
         loading = false;
         history += ' '+ value.text + '\n';
         textChat.add({
-          "role": "Aybala",
+          "role": "Gemini",
           "text": value.text,
         });
       });
@@ -105,7 +105,7 @@ class _TextOnlyState extends State<TextOnly> {
       setState(() {
         loading = false;
         textChat.add({
-          "role": "AYBALA",
+          "role": "Gemini",
           "text": error.toString(),
         });
       });
