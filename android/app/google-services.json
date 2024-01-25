@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "952643607444",
+    "project_id": "w-health-4c125",
+    "storage_bucket": "w-health-4c125.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:952643607444:android:2331907e4a11de69210d81",
+        "android_client_info": {
+          "package_name": "com.example.w_health"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB5ahcoGJaM7vrma7rS5EWrWZHDjPLY34Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
