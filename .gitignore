@@ -1,0 +1,3 @@
+#ignoring specific file
+lib/chatbot/geminiAI.dart
+/lib/chatbot/geminiAI.dart

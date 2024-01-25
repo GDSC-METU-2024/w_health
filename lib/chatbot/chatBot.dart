@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:google_gemini/google_gemini.dart';
 import 'dart:io';
 import 'package:image_picker/image_picker.dart';
-import 'package:w_health/chatbot/geminiBot.dart';
+import 'geminiAI.dart';
+
 
 
 

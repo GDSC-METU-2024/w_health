@@ -1,0 +1,4 @@
+#Thu Jan 25 13:38:25 TRT 2024
+base.0=/Users/alperenovak/StudioProjects/w_health/build/app/intermediates/dex/debug/mergeDexDebug/classes.dex
+path.0=classes.dex
+renamed.0=classes.dex
