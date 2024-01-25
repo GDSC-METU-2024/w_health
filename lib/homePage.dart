@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:w_health/chatbot/chatBot.dart';
+import 'package:w_health/loginPage.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -33,6 +34,16 @@ class _HomePageState extends State<HomePage> {
                 print('Button Pressed!');
               },
               child: Text('Go to GEMINI'),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => LoginPage()),
+                );
+                print('Button Pressed!');
+              },
+              child: Text('Go to Login Page'),
             ),
           ],
         ),

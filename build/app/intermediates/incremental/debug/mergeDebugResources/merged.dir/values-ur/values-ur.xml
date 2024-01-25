@@ -7,5 +7,6 @@
     <string msgid="6107532579223922871" name="call_notification_incoming_text">"اِن کمنگ کال"</string>
     <string msgid="8623827134497363134" name="call_notification_ongoing_text">"جاری کال"</string>
     <string msgid="59049573811482460" name="call_notification_screening_text">"اِن کمنگ کال کی اسکریننگ"</string>
+    <string name="common_google_play_services_unknown_issue">‏%1$s کو Google Play سروسز کے ساتھ مسئلہ پیش آ رہا ہے۔ براہ کرم دوبارہ کوشش کریں۔</string>
     <string msgid="6277540029070332960" name="status_bar_notification_info_overflow">"+999"</string>
 </resources>

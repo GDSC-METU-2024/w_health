@@ -7,5 +7,6 @@
     <string msgid="6107532579223922871" name="call_notification_incoming_text">"ইনকামিং কল"</string>
     <string msgid="8623827134497363134" name="call_notification_ongoing_text">"চালু থাকা কল"</string>
     <string msgid="59049573811482460" name="call_notification_screening_text">"ইনকামিং কল স্ক্রিনিং করা হচ্ছে"</string>
+    <string name="common_google_play_services_unknown_issue">Google Play পরিষেবাগুলির সাথে %1$s এর সমস্যা হচ্ছে৷ অনুগ্রহ করে আবার চেষ্টা করুন৷</string>
     <string msgid="6277540029070332960" name="status_bar_notification_info_overflow">"৯৯৯+"</string>
 </resources>
