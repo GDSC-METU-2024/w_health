@@ -1,4 +1,4 @@
-#Fri Jan 26 11:36:15 TRT 2024
+#Fri Jan 26 14:31:40 TRT 2024
 base.0=/Users/alperenovak/StudioProjects/w_health/build/app/intermediates/dex/debug/mergeExtDexDebug/classes.dex
 base.1=/Users/alperenovak/StudioProjects/w_health/build/app/intermediates/dex/debug/mergeLibDexDebug/0/classes.dex
 base.2=/Users/alperenovak/StudioProjects/w_health/build/app/intermediates/dex/debug/mergeProjectDexDebug/0/classes.dex

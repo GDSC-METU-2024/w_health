@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:w_health/chatbot/chatBot.dart';
+import 'package:w_health/home/blog/blog.dart';
 import 'package:w_health/home/maps/doctorMap.dart';
 import 'package:w_health/loginPage.dart';
 
@@ -55,6 +56,16 @@ class _HomePageState extends State<HomePage> {
                 print('Button Pressed!');
               },
               child: Text('Go to Map Page'),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => BlogScreen()),
+                );
+                print('Button Pressed!');
+              },
+              child: Text('Go to blog Page'),
             ),
           ],
         ),
