@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:w_health/chatbot/chatBot.dart';
-import 'package:w_health/home/blog/blog.dart';
-import 'package:w_health/home/maps/doctorMap.dart';
-import 'package:w_health/loginPage.dart';
+import 'screens/home/blog/blog.dart';
+import 'package:w_health/screens/home/maps/doctorMap.dart';
+import 'package:w_health/screens/login/loginPage.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});

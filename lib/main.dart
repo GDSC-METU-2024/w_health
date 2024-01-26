@@ -1,8 +1,12 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:w_health/screens/login/authPage.dart';
 import 'package:w_health/firebase_options.dart';
 import 'package:w_health/homePage.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:w_health/utils/navbar.dart';
 
+int? initScreen = 0;
 /*
 Future<void> main() async {
   //WidgetsFlutterBinding.ensureInitialized();
@@ -16,7 +20,14 @@ Future<void> main() async {
   runApp(const MyApp());
 }*/
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+  SharedPreferences preferences = await SharedPreferences.getInstance();
+  initScreen = await preferences.getInt("initScreen");
+  await preferences.setInt("initScreen", 100);
   runApp(const MyApp());
 }
 
@@ -31,7 +42,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.indigo),
         useMaterial3: true,
       ),
-      home: const HomePage(),
+      home: const BottomNavBar(),
     );
   }
 }

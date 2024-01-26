@@ -1,6 +1,5 @@
-
 import 'package:flutter/material.dart';
-import 'package:w_health/home/blog/data.dart';
+import 'data.dart';
 
 class BlogDetailsPage extends StatefulWidget {
   final DataModel data;

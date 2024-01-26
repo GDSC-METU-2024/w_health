@@ -1,8 +1,6 @@
-
-import "package:flutter/material.dart";
-import "package:w_health/home/blog/blog_details_page.dart";
-import "package:w_health/home/blog/data.dart";
-
+import 'package:flutter/material.dart';
+import 'blog_details_page.dart';
+import 'data.dart';
 
 class BlogScreen extends StatefulWidget {
   const BlogScreen({super.key});
@@ -19,7 +17,7 @@ class _BlogScreenState extends State<BlogScreen> {
       appBar: AppBar(
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
-          onPressed:() => Navigator.pop(context),
+          onPressed: () => Navigator.pop(context),
           color: Colors.grey.shade800,
         ),
         title: Text(
@@ -58,7 +56,7 @@ class _BlogScreenState extends State<BlogScreen> {
           ),
           Padding(
             padding:
-            const EdgeInsets.symmetric(horizontal: 15.0, vertical: 10.0),
+                const EdgeInsets.symmetric(horizontal: 15.0, vertical: 10.0),
             child: Text(
               "blogs",
               style: const TextStyle(

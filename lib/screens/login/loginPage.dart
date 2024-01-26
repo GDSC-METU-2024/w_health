@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
 import 'dart:ui';
-import 'package:google_fonts/google_fonts.dart';
-import '../utils.dart';
+import '../../utils/utils.dart';
 
 class LoginPage extends StatelessWidget {
   @override
@@ -467,10 +466,10 @@ class LoginPage extends StatelessWidget {
                             fontSize: 14 * ffem,
                             fontWeight: FontWeight.w400,
                             height: 1.9462193298 * ffem / fem,
-                            color: Color(0xffaaaaaa),
+                            color: const Color(0xffaaaaaa),
                           ),
                           children: [
-                            TextSpan(
+                            const TextSpan(
                               text: 'New member? ',
                             ),
                             TextSpan(
