@@ -1,5 +1,20 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:w_health/firebase_options.dart';
 import 'package:w_health/homePage.dart';
+
+/*
+Future<void> main() async {
+  //WidgetsFlutterBinding.ensureInitialized();
+  //await EasyLocalization.ensureInitialized();
+  //SharedPreferences preferences = await SharedPreferences.getInstance();
+  //initScreen = await preferences.getInt("initScreen");
+  //await preferences.setInt("initScreen", 100);
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+  runApp(const MyApp());
+}*/
 
 void main() {
   runApp(const MyApp());
