@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.w_health.app-mergeDebugResources-26:/values-eu/values-eu.xml",
+            "outputFile": "com.example.w_health.app-mergeDebugResources-27:/values-eu/values-eu.xml",
             "map": [
                 {
                     "source": "C:\\Users\\mcant\\.gradle\\caches\\transforms-3\\c66a84034fdee472d77a2fc15f5cce5d\\transformed\\core-1.10.1\\res\\values-eu\\values-eu.xml",
@@ -18,6 +18,23 @@
                         "startOffsets": "55,153,256,356,459,563,666,3479",
                         "endColumns": "97,102,99,102,103,102,117,100",
                         "endOffsets": "148,251,351,454,558,661,779,3575"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\mcant\\.gradle\\caches\\transforms-3\\30cb6f6210c6f10769db0ca1144fe992\\transformed\\jetified-play-services-basement-18.2.0\\res\\values-eu\\values.xml",
+                    "from": {
+                        "startLines": "4",
+                        "startColumns": "0",
+                        "startOffsets": "195",
+                        "endColumns": "138",
+                        "endOffsets": "333"
+                    },
+                    "to": {
+                        "startLines": "17",
+                        "startColumns": "4",
+                        "startOffsets": "1802",
+                        "endColumns": "142",
+                        "endOffsets": "1940"
                     }
                 },
                 {
@@ -52,23 +69,6 @@
                         "startOffsets": "3059,3159,3261,3374",
                         "endColumns": "99,101,112,104",
                         "endOffsets": "3154,3256,3369,3474"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\mcant\\.gradle\\caches\\transforms-3\\b98038a8bb5f558b05cc7fc73ca7ad87\\transformed\\jetified-play-services-basement-18.1.0\\res\\values-eu\\values.xml",
-                    "from": {
-                        "startLines": "4",
-                        "startColumns": "0",
-                        "startOffsets": "195",
-                        "endColumns": "138",
-                        "endOffsets": "333"
-                    },
-                    "to": {
-                        "startLines": "17",
-                        "startColumns": "4",
-                        "startOffsets": "1802",
-                        "endColumns": "142",
-                        "endOffsets": "1940"
                     }
                 }
             ]

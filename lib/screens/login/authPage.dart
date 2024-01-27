@@ -80,7 +80,7 @@ class _AuthPageState extends State<AuthPage> {
               getPages: AppPage.routes,
             );
           } else {
-            return Splash();
+            return const Splash();
           }
         },
       ),

@@ -24,9 +24,9 @@ class _BottomNavBarState extends State<BottomNavBar> {
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: CurvedNavigationBar(
-        buttonBackgroundColor: Color(0xFFFFC4DD),
+        buttonBackgroundColor: const Color(0xFFFFC4DD),
         backgroundColor: Colors.transparent,
-        color: Color(0xFFC1C7D0),
+        color: const Color(0xFFC1C7D0),
         index: _selectedIndex,
         items: const [
           Icon(
