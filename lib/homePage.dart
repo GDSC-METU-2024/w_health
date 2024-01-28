@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:w_health/chatbot/chatBot.dart';
+import 'package:w_health/screens/home/doctor_rating/doctorList.dart';
 import 'screens/home/blog/blog.dart';
 import 'package:w_health/screens/home/maps/doctorMap.dart';
 import 'package:w_health/screens/login/loginPage.dart';
@@ -66,6 +67,16 @@ class _HomePageState extends State<HomePage> {
                 print('Button Pressed!');
               },
               child: Text('Go to blog Page'),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => DoctorScreen()),
+                );
+                print('Button Pressed!');
+              },
+              child: Text('Go to doctor Page'),
             ),
           ],
         ),
