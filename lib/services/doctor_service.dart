@@ -8,8 +8,12 @@ class ReportDoctorService {
       String City,
       String Description,
       String Gender,
+      String Image,
+      GeoPoint Location,
       String Name,
       String Specialty,
+      String Total_Rating,
+      int User_Rated,
       ) async {
     var ref = _firestore.collection("Doctors");
 
@@ -26,8 +30,12 @@ class ReportDoctorService {
       City: City,
       Description: Description,
       Gender: Gender,
+      Image: Image,
+      Location: Location,
       Name: Name,
       Specialty: Specialty,
+      Total_Rating: Total_Rating,
+      User_Rated: User_Rated
     );
   }
 
