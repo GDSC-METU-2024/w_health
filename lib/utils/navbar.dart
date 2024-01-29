@@ -19,7 +19,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
     BlogScreen(),
     MapUIcustom(),
   ];
-  int _selectedIndex = 1;
+  int _selectedIndex = 2;
   @override
   Widget build(BuildContext context) {
     return Scaffold(

@@ -3,10 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import '../../splashScreen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:geolocator/geolocator.dart';
-import 'package:get/get.dart';
-import '../../routes/routes.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
+import '../../utils/navbar.dart';
 
 class AuthPage extends StatefulWidget {
   const AuthPage({super.key});
@@ -70,15 +67,7 @@ class _AuthPageState extends State<AuthPage> {
         stream: FirebaseAuth.instance.authStateChanges(),
         builder: (context, snapshot) {
           if (snapshot.hasData) {
-            return GetMaterialApp(
-              theme: ThemeData(
-                colorScheme: ColorScheme.fromSwatch()
-                    .copyWith(secondary: Color(0xffff7800)),
-              ),
-              debugShowCheckedModeBanner: false,
-              initialRoute: AppPage.getNavBar(),
-              getPages: AppPage.routes,
-            );
+            return const BottomNavBar();
           } else {
             return const Splash();
           }

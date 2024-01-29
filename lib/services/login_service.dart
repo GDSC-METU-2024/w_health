@@ -38,11 +38,14 @@ class FirebaseUserAuthentication {
     }
   }
 
-  void createPerson(String name, String email) async {
-    await _firestore
-        .collection("Person")
-        .doc()
-        .set({'userName': name, 'email': email});
+  Future<User?> createPerson(String name, String email, String password) async {
+    var user = await _auth.createUserWithEmailAndPassword(
+        email: email, password: password);
+    await _firestore.collection("Person").doc(user.user?.uid).set({
+      'name': name,
+      'email': email,
+    });
+    return user.user;
   }
 
   static void showErrorMessage(context, String message) {
@@ -50,7 +53,7 @@ class FirebaseUserAuthentication {
       context: context,
       builder: (context) {
         return AlertDialog(
-          backgroundColor: const Color(0xFF4E6C50),
+          backgroundColor: const Color(0xffffc4dd),
           title: Text(
             message,
             style: const TextStyle(color: Colors.white),

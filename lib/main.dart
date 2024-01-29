@@ -4,6 +4,7 @@ import 'package:w_health/screens/login/authPage.dart';
 import 'package:w_health/firebase_options.dart';
 import 'package:w_health/homePage.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:w_health/splashScreen.dart';
 import 'package:w_health/utils/navbar.dart';
 
 int? initScreen = 0;
@@ -42,7 +43,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.indigo),
         useMaterial3: true,
       ),
-      home: const BottomNavBar(),
+      home: const AuthPage(),
     );
   }
 }

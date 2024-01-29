@@ -8,11 +8,7 @@ class AuthService {
   Future<User?> createPerson(GoogleSignInAccount? gUser, uid) async {
     await _firestore.collection("Person").doc(uid).set({
       'name': gUser?.displayName,
-      'surname': "",
       'email': gUser?.email,
-      'password': "",
-      'description': "",
-      "profileImage": gUser?.photoUrl,
     });
   }
 

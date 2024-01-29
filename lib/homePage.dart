@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:w_health/chatbot/chatBot.dart';
 import 'package:w_health/screens/home/doctor_rating/doctorList.dart';
+import 'package:w_health/services/login_service.dart';
 import 'screens/home/blog/blog.dart';
 import 'package:w_health/screens/home/maps/doctorMap.dart';
 import 'package:w_health/screens/login/loginPage.dart';
@@ -17,6 +18,11 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        actions: [
+          IconButton(
+              onPressed: () => FirebaseUserAuthentication().logout(),
+              icon: Icon(Icons.logout)),
+        ],
         title: Text('Home Page'),
       ),
       body: Center(

@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
 import 'package:w_health/screens/login/signup/signupPage.dart';
+import 'package:w_health/services/auth_service.dart';
 import 'dart:ui';
 import 'package:w_health/utils/utils.dart';
 
@@ -13,6 +14,7 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  final AuthService _auth = AuthService();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
 
@@ -41,7 +43,7 @@ class _LoginPageState extends State<LoginPage> {
             child: Container(
               // signinWQK (8:281)
               width: 428 * fem,
-              height: 926 * fem,
+              height: 800 * fem,
               decoration: BoxDecoration(
                 color: Color(0xfff6f7f9),
                 borderRadius: BorderRadius.circular(40 * fem),
@@ -52,17 +54,17 @@ class _LoginPageState extends State<LoginPage> {
                   Container(
                     // autogroupeeno27m (M8hAWgwNfHwmgErTvDeeNo)
                     width: double.infinity,
-                    height: 285.82 * fem,
+                    height: 250.82 * fem,
                     child: Stack(
                       children: [
                         Positioned(
                           // signin9iB (8:282)
-                          left: 54 * fem,
-                          top: 212 * fem,
+                          left: 50 * fem,
+                          top: 180 * fem,
                           child: Align(
                             child: SizedBox(
-                              width: 75 * fem,
-                              height: 33 * fem,
+                              width: 175 * fem,
+                              height: 80 * fem,
                               child: Text(
                                 'Login',
                                 style: SafeGoogleFont(
@@ -72,39 +74,6 @@ class _LoginPageState extends State<LoginPage> {
                                   height: 1.5 * ffem / fem,
                                   color: Color(0xff181d2d),
                                 ),
-                              ),
-                            ),
-                          ),
-                        ),
-                        Positioned(
-                          // ellipse21Hhu (8:319)
-                          left: 23 * fem,
-                          top: 92 * fem,
-                          child: Align(
-                            child: SizedBox(
-                              width: 44 * fem,
-                              height: 44 * fem,
-                              child: Container(
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(22 * fem),
-                                  color: Color(0xffffc4dd),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                        Positioned(
-                          // iconlylightoutlinearrowrightz6 (8:320)
-                          left: 37.1289404647 * fem,
-                          top: 107.9455277075 * fem,
-                          child: Align(
-                            child: SizedBox(
-                              width: 15.21 * fem,
-                              height: 12.5 * fem,
-                              child: Image.asset(
-                                'assets/page-1/images/iconly-light-outline-arrow-right.png',
-                                width: 15.21 * fem,
-                                height: 12.5 * fem,
                               ),
                             ),
                           ),
@@ -187,42 +156,39 @@ class _LoginPageState extends State<LoginPage> {
                           margin: EdgeInsets.fromLTRB(
                               0 * fem, 0 * fem, 0 * fem, 35 * fem),
                           child: TextButton(
-                            onPressed: () {},
+                            onPressed: () async {
+                              await FirebaseUserAuthentication().signIn(
+                                email: _emailController.text,
+                                password: _passwordController.text,
+                                context: context,
+                              );
+                            },
                             style: TextButton.styleFrom(
                               padding: EdgeInsets.zero,
                             ),
-                            child: GestureDetector(
-                              onTap: () async {
-                                await FirebaseUserAuthentication().signIn(
-                                  email: _emailController.text,
-                                  password: _passwordController.text,
-                                  context: context,
-                                );
-                              },
-                              child: Container(
-                                width: double.infinity,
-                                height: 60 * fem,
-                                decoration: BoxDecoration(
-                                  color: Color(0xffffc4dd),
-                                  borderRadius: BorderRadius.circular(99 * fem),
-                                  boxShadow: [
-                                    BoxShadow(
-                                      color: Color(0x4c95adfe),
-                                      offset: Offset(0 * fem, 10 * fem),
-                                      blurRadius: 11 * fem,
-                                    ),
-                                  ],
-                                ),
-                                child: Center(
-                                  child: Text(
-                                    'Sign in',
-                                    style: SafeGoogleFont(
-                                      'Poppins',
-                                      fontSize: 22 * ffem,
-                                      fontWeight: FontWeight.w500,
-                                      height: 1.5 * ffem / fem,
-                                      color: Color(0xffffffff),
-                                    ),
+                            child: Container(
+                              width: double.infinity,
+                              height: 60 * fem,
+                              decoration: BoxDecoration(
+                                color: const Color(0xffffc4dd),
+                                borderRadius: BorderRadius.circular(99 * fem),
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: const Color(0x4c95adfe),
+                                    offset: Offset(0 * fem, 10 * fem),
+                                    blurRadius: 11 * fem,
+                                  ),
+                                ],
+                              ),
+                              child: Center(
+                                child: Text(
+                                  'Sign in',
+                                  style: SafeGoogleFont(
+                                    'Poppins',
+                                    fontSize: 22 * ffem,
+                                    fontWeight: FontWeight.w500,
+                                    height: 1.5 * ffem / fem,
+                                    color: Color(0xffffffff),
                                   ),
                                 ),
                               ),
@@ -292,63 +258,66 @@ class _LoginPageState extends State<LoginPage> {
                             ],
                           ),
                         ),
-                        Container(
-                          // autogroupyvxqkwV (M8hB5qeobvoTpZ5KLmyVXq)
-                          margin: EdgeInsets.fromLTRB(
-                              0 * fem, 0 * fem, 0 * fem, 18 * fem),
-                          width: double.infinity,
-                          height: 79 * fem,
-                          child: Stack(
-                            children: [
-                              Positioned(
-                                // buttonh63 (8:327)
-                                left: 0 * fem,
-                                top: 12 * fem,
-                                child: Container(
-                                  width: 358 * fem,
-                                  height: 55 * fem,
-                                  decoration: BoxDecoration(
-                                    color: Color(0xffffffff),
-                                    borderRadius: BorderRadius.circular(
-                                        91.3783035278 * fem),
-                                    boxShadow: [
-                                      BoxShadow(
-                                        color: Color(0xffc1c7d0),
-                                        offset: Offset(0 * fem, 2 * fem),
-                                        blurRadius: 10.0000009537 * fem,
-                                      ),
-                                    ],
-                                  ),
-                                  child: Center(
-                                    child: Text(
-                                      'Login with Gmail',
-                                      style: SafeGoogleFont(
-                                        'Poppins',
-                                        fontSize: 15 * ffem,
-                                        fontWeight: FontWeight.w400,
-                                        height: 1.9462193807 * ffem / fem,
-                                        color: Color(0xff001833),
+                        GestureDetector(
+                          onTap: () => _auth.signInWithGoogle(),
+                          child: Container(
+                            // autogroupyvxqkwV (M8hB5qeobvoTpZ5KLmyVXq)
+                            margin: EdgeInsets.fromLTRB(
+                                0 * fem, 0 * fem, 0 * fem, 18 * fem),
+                            width: double.infinity,
+                            height: 79 * fem,
+                            child: Stack(
+                              children: [
+                                Positioned(
+                                  // buttonh63 (8:327)
+                                  left: 0 * fem,
+                                  top: 12 * fem,
+                                  child: Container(
+                                    width: 358 * fem,
+                                    height: 55 * fem,
+                                    decoration: BoxDecoration(
+                                      color: Color(0xffffffff),
+                                      borderRadius: BorderRadius.circular(
+                                          91.3783035278 * fem),
+                                      boxShadow: [
+                                        BoxShadow(
+                                          color: Color(0xffc1c7d0),
+                                          offset: Offset(0 * fem, 2 * fem),
+                                          blurRadius: 10.0000009537 * fem,
+                                        ),
+                                      ],
+                                    ),
+                                    child: Center(
+                                      child: Text(
+                                        'Login with Gmail',
+                                        style: SafeGoogleFont(
+                                          'Poppins',
+                                          fontSize: 15 * ffem,
+                                          fontWeight: FontWeight.w400,
+                                          height: 1.9462193807 * ffem / fem,
+                                          color: Color(0xff001833),
+                                        ),
                                       ),
                                     ),
                                   ),
                                 ),
-                              ),
-                              Positioned(
-                                // googleremovebgpreview18h9 (8:349)
-                                left: 34 * fem,
-                                top: 0 * fem,
-                                child: Align(
-                                  child: SizedBox(
-                                    width: 79 * fem,
-                                    height: 79 * fem,
-                                    child: Image.asset(
-                                      'assets/page-1/images/google-removebg-preview-1.png',
-                                      fit: BoxFit.cover,
+                                Positioned(
+                                  // googleremovebgpreview18h9 (8:349)
+                                  left: 34 * fem,
+                                  top: 0 * fem,
+                                  child: Align(
+                                    child: SizedBox(
+                                      width: 79 * fem,
+                                      height: 79 * fem,
+                                      child: Image.asset(
+                                        'assets/page-1/images/google-removebg-preview-1.png',
+                                        fit: BoxFit.cover,
+                                      ),
                                     ),
                                   ),
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
                         ),
                         Row(
