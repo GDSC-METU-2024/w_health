@@ -18,6 +18,7 @@ class _DoctorScreenState extends State<DoctorScreen> {
   final ReportDoctorService _reportService = ReportDoctorService();
   final FirebaseFirestore db = FirebaseFirestore.instance;
   String? selectedCity;
+  String? selectedGender;
   var item_count = 0;
   List<String> citiesList = <String>[
     "Ankara",
@@ -28,6 +29,11 @@ class _DoctorScreenState extends State<DoctorScreen> {
     "City F",
     "City G",
     "City H",
+  ];
+
+  List<String> genderList = <String>[
+    "Female",
+    "Male",
   ];
 
   @override
@@ -106,6 +112,33 @@ class _DoctorScreenState extends State<DoctorScreen> {
                 },
               ),
             ),
+            Padding(
+              padding: const EdgeInsets.all(12.0),
+              child: DropdownButton<String>(
+                hint: Text(
+                  "which gender",
+                ),
+                isExpanded: true,
+                value: selectedGender,
+                items: genderList.map((String value) {
+                  return DropdownMenuItem<String>(
+                    value: value,
+                    child: Text(
+                      value,
+                    ),
+                  );
+                }).toList(),
+                onChanged: (_) {
+                  FocusScope.of(context).requestFocus(FocusNode());
+                  FocusScope.of(context).requestFocus(FocusNode());
+                  setState(() {
+                    selectedGender = _!;
+                    item_count = 0;
+
+                  });
+                },
+              ),
+            ),
             const SizedBox(height: 12),
             StreamBuilder(
               stream: _reportService.getStatus(),
@@ -123,7 +156,7 @@ class _DoctorScreenState extends State<DoctorScreen> {
 
 
 
-                    if (myReport['City'] == selectedCity) {
+                    if (myReport['City'] == selectedCity && myReport['Gender'] == selectedGender) {
                       item_count += 1;
                       return Padding(
                         padding: const EdgeInsets.all(8.0),
