@@ -6,6 +6,7 @@ import 'package:geolocator/geolocator.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:w_health/screens/home/doctor_rating/doctorDetail.dart';
 
 class MapUIcustom extends StatefulWidget {
   @override
@@ -55,13 +56,13 @@ class _MapUIStatecustom extends State<MapUIcustom> {
       if (docs.docs.isNotEmpty) {
         for (int i = 0; i < docs.docs.length; ++i) {
           //clients.add(docs.docs[i].data);
-          loadData(docs.docs[i].data, i);
+          loadData(docs.docs[i].data, i,docs.docs[i].id);
         }
       }
     });
   }
 
-  loadData(fireBase, i) {
+  loadData(fireBase, i,id) {
     _markers.add(
       Marker(
         markerId: MarkerId("$i"),
@@ -145,6 +146,12 @@ class _MapUIStatecustom extends State<MapUIcustom> {
                         onTap: () {
                           // Go to doctor page
                           print('Text Clicked!');
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => DoctorDetail(id: id),
+                            ),
+                          );
                         },
                         child: const Align(
                           alignment: Alignment.centerRight,

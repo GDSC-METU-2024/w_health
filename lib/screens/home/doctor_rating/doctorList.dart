@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import "package:flutter/material.dart";
 import 'package:google_fonts/google_fonts.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:w_health/screens/home/doctor_rating/doctorDetail.dart';
 
 import '../../../services/doctor_service.dart';
 
@@ -20,8 +21,8 @@ class _DoctorScreenState extends State<DoctorScreen> {
   var item_count = 0;
   List<String> citiesList = <String>[
     "Ankara",
-    "İzmir",
-    "İstanbul",
+    "Izmir",
+    "Istanbul",
     "Antalya",
     "City E",
     "City F",
@@ -126,7 +127,18 @@ class _DoctorScreenState extends State<DoctorScreen> {
                       item_count += 1;
                       return Padding(
                         padding: const EdgeInsets.all(8.0),
-                        child: Container(
+                        child: GestureDetector(
+                          onTap: () {
+                            // Handle the tap gesture here
+                            print(myReport.id);
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => DoctorDetail(id: myReport.id),
+                              ),
+                            );
+                          },
+                          child: Container(
                           decoration: BoxDecoration(
                             color: Colors.grey[300],
                             borderRadius: const BorderRadius.all(
@@ -147,8 +159,15 @@ class _DoctorScreenState extends State<DoctorScreen> {
                                   children: [
                                     Row(
                                       children: [
-                                        Image.asset(
-                                            "assets/images/profile_black.png"),
+                                        ClipRRect(
+                                          borderRadius: BorderRadius.circular(8.0),
+                                          child: Image.network(
+                                            myReport['Image'],
+                                            width: 100.0,
+                                            height: 100.0,
+                                            fit: BoxFit.cover,
+                                          ),
+                                        ),
                                         const SizedBox(width: 10),
                                         Text(
                                           myReport['Name'],
@@ -171,6 +190,7 @@ class _DoctorScreenState extends State<DoctorScreen> {
                                 const SizedBox(height: 20),
                                 Text(
                                   myReport['Description'],
+                                  maxLines: 2,
                                   style: GoogleFonts.nunitoSans(
                                     fontSize: 16,
                                     fontWeight: FontWeight.w400,
@@ -224,6 +244,7 @@ class _DoctorScreenState extends State<DoctorScreen> {
                               ],
                             ),
                           ),
+                        ),
                         ),
                       );
                     }
