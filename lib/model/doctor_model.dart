@@ -25,6 +25,18 @@ class Report_Doctor {
         required this.Total_Rating,
         required this.User_Rated,});
 
+  /*Report_Doctor.fromJson(Map<String, dynamic> json) {
+    City = json['City'];
+    City = json['City'];
+    Gender = json['Gender'];
+    Image = json['Image'];
+    Location = json['Location'];
+    Name = json['Name'];
+    Specialty = json['Specialty'];
+    Total_Rating = json['Total_Rating'];
+    User_Rated = json['User_Rated'];
+  }*/
+
   factory Report_Doctor.fromSnapshot(DocumentSnapshot snapshot) {
     return Report_Doctor(
         City: snapshot["City"],
