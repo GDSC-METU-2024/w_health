@@ -1,46 +1,90 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:google_gemini/google_gemini.dart';
 import 'dart:io';
 import 'package:image_picker/image_picker.dart';
+import 'package:w_health/utils/utils.dart';
 import 'geminiAI.dart';
-
-
-
 
 
 class ChatBot extends StatefulWidget {
   const ChatBot({
-    super.key,
+    super.key, required this.page
   });
+  final page;
 
   @override
   State<ChatBot> createState() => _ChatBotState();
 }
 
 class _ChatBotState extends State<ChatBot> {
+
   @override
   Widget build(BuildContext context) {
+    var page = widget.page;
     return DefaultTabController(
-        initialIndex: 0,
+        initialIndex: page,
         length: 2,
         child: Scaffold(
             appBar: AppBar(
-              title: const Text("Google Gemini"),
+              title:  Text("Google Gemini",
+                style: SafeGoogleFont(
+                  'Poppins',
+                  fontSize: 16,
+                  fontWeight: FontWeight.w500,
+                  height: 1.25,
+                  color: Colors.white.withOpacity(0.8),
+                ),),
+              backgroundColor: Color(0x44000000),
+              elevation: 0,
               centerTitle: true,
               bottom: const TabBar(
+
                 tabs: [
-                  Tab(text: "Text Only"),
+                  Tab(text: "Text Only",),
                   Tab(text: "Text with Image"),
                 ],
               ),
             ),
-            body: const TabBarView(
-              children: [TextOnly(), TextWithImage()],
-            )));
+            backgroundColor: Colors.black,
+            body: Stack(
+              children: [
+                Positioned(
+                  top: 100,
+                  right: 0,
+                  child: Container(
+                    height: 300,
+                    width: 150,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.only(
+                      bottomLeft: Radius.circular(200),
+                      topLeft: Radius.circular(200),
+                      ),
+                      gradient: LinearGradient(
+                      begin: Alignment.topRight,
+                      end: Alignment.bottomRight,
+                      colors: [
+                        Color.fromRGBO(254,196,221, 0.5),
+                        Color.fromRGBO(192,159,248, 0.5),
+                      ],
+                      ),
+                    ),
+                )
+            ),
+            BackdropFilter(
+              filter: ImageFilter.blur(sigmaX: 60.0, sigmaY: 60.0),
+              child: const TabBarView(
+                children: [TextOnly(), TextWithImage()],
+            )
+    )])
+    )
+    );
   }
 }
 
 // ------------------------------ Text Only ------------------------------
+
 
 class TextOnly extends StatefulWidget {
   const TextOnly({
@@ -120,6 +164,7 @@ class _TextOnlyState extends State<TextOnly> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: Colors.transparent,
         body: Column(
           children: [
             Expanded(
@@ -131,10 +176,31 @@ class _TextOnlyState extends State<TextOnly> {
                   return ListTile(
                     isThreeLine: true,
                     leading: CircleAvatar(
-                      child: Text(textChat[index]["role"].substring(0, 1)),
+                      backgroundColor: Color.fromRGBO(192,159,248, 0.9),
+                      child: Text(textChat[index]["role"].substring(0, 1),
+                        style: SafeGoogleFont(
+                          'Poppins',
+                          fontSize: 24,
+                          fontWeight: FontWeight.w500,
+                          height: 1.25,
+                          color: Colors.white.withOpacity(0.8),
+                        ),),
                     ),
-                    title: Text(textChat[index]["role"]),
-                    subtitle: Text(textChat[index]["text"]),
+                    title: Text(textChat[index]["role"],
+                      style: SafeGoogleFont(
+                        'Poppins',
+                        fontSize: 16,
+                        fontWeight: FontWeight.w500,
+                        height: 1.25,
+                        color: Colors.white.withOpacity(0.8),
+                      ),),
+                    subtitle: Text(textChat[index]["text"],style: SafeGoogleFont(
+                      'Poppins',
+                      fontSize: 13,
+                      fontWeight: FontWeight.w500,
+                      height: 1.25,
+                      color: Colors.white.withOpacity(0.8),
+                    ),),
                   );
                 },
               ),
@@ -144,16 +210,25 @@ class _TextOnlyState extends State<TextOnly> {
               margin: const EdgeInsets.all(20),
               padding: const EdgeInsets.symmetric(horizontal: 15.0),
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10.0),
-                border: Border.all(color: Colors.grey),
+                color: Color.fromRGBO(192,159,248, 0.09),
+                borderRadius: BorderRadius.circular(40.0),
+                border: Border.all(color: Color.fromRGBO(192,159,248, 0.5)),
               ),
               child: Row(
                 children: [
                   Expanded(
                     child: TextField(
+                      style: TextStyle(color: Colors.white.withOpacity(0.8)),
                       controller: _textController,
                       decoration: InputDecoration(
                         hintText: "Type a message",
+                        hintStyle: SafeGoogleFont(
+                          'Poppins',
+                          fontSize: 13,
+                          fontWeight: FontWeight.w500,
+                          height: 1.25,
+                          color: Colors.white.withOpacity(0.8),
+                        ),
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10.0),
                             borderSide: BorderSide.none),
@@ -166,7 +241,7 @@ class _TextOnlyState extends State<TextOnly> {
                   IconButton(
                     icon: loading
                         ? const CircularProgressIndicator()
-                        : const Icon(Icons.send),
+                        : const Icon(Icons.send,color: Color.fromRGBO(192,159,248, 0.5)),
                     onPressed: () {
                       fromText(query: _textController.text);
                     },
@@ -244,6 +319,7 @@ class _TextWithImageState extends State<TextWithImage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.transparent,
       body: Column(
         children: [
           Expanded(
@@ -275,16 +351,25 @@ class _TextWithImageState extends State<TextWithImage> {
             margin: const EdgeInsets.all(20),
             padding: const EdgeInsets.symmetric(horizontal: 15.0),
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10.0),
-              border: Border.all(color: Colors.grey),
+              color: Color.fromRGBO(254,196,221, 0.09),
+              borderRadius: BorderRadius.circular(40.0),
+              border: Border.all(color: Color.fromRGBO(254,196,221, 0.5)),
             ),
             child: Row(
               children: [
                 Expanded(
                   child: TextField(
+                    style: TextStyle(color: Colors.white.withOpacity(0.8)),
                     controller: _textController,
                     decoration: InputDecoration(
                       hintText: "Write a message",
+                      hintStyle: SafeGoogleFont(
+                        'Poppins',
+                        fontSize: 13,
+                        fontWeight: FontWeight.w500,
+                        height: 1.25,
+                        color: Colors.white.withOpacity(0.8),
+                      ),
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10.0),
                           borderSide: BorderSide.none),
@@ -295,7 +380,7 @@ class _TextWithImageState extends State<TextWithImage> {
                   ),
                 ),
                 IconButton(
-                  icon: const Icon(Icons.add_a_photo),
+                  icon: const Icon(Icons.add_a_photo,color: Color.fromRGBO(254,196,221, 0.5)),
                   onPressed: () async {
                     final XFile? image =
                     await picker.pickImage(source: ImageSource.gallery);
@@ -307,7 +392,7 @@ class _TextWithImageState extends State<TextWithImage> {
                 IconButton(
                   icon: loading
                       ? const CircularProgressIndicator()
-                      : const Icon(Icons.send),
+                      : const Icon(Icons.send,color: Color.fromRGBO(254,196,221, 0.5)),
                   onPressed: () {
                     if (imageFile == null) {
                       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(

@@ -1,6 +1,7 @@
 import 'dart:ui';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/material.dart';
+import 'package:w_health/chatbot/chatBot.dart';
 import 'package:w_health/utils/utils.dart';
 
 
@@ -70,6 +71,10 @@ class _AINewUIState extends State<AINewUI> {
                       onTap: () {
                       // Your onTap logic here
                       print('Container tapped!');
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => ChatBot(page: 0,)),
+                      );
                       },
                       child:Container(
                         height: 104,
@@ -141,6 +146,10 @@ class _AINewUIState extends State<AINewUI> {
                     onTap: () {
                       // Your onTap logic here
                       print('Container tapped!');
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => ChatBot(page: 1,)),
+                      );
                     },
                     child:Container(
                       height: 104,
