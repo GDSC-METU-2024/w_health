@@ -32,6 +32,9 @@ class FirebaseUserAuthentication {
         );
       } else if (e.code == "wrong-password") {
         showErrorMessage(context, "Wrong Password!");
+      } else if (e.code == "invalid-credential") {
+        showErrorMessage(context,
+            "This e-mail is registered with gmail, try logging in with gmail.");
       } else {
         showErrorMessage(context, "The fields are empty.");
       }
@@ -56,7 +59,18 @@ class FirebaseUserAuthentication {
           backgroundColor: const Color(0xffffc4dd),
           title: Text(
             message,
-            style: const TextStyle(color: Colors.white),
+            style: const TextStyle(color: Colors.white, fontSize: 17),
+          ),
+          content: Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              TextButton(
+                  onPressed: () => Navigator.pop(context),
+                  child: const Text(
+                    "OK",
+                    style: TextStyle(color: Colors.white),
+                  )),
+            ],
           ),
         );
       },

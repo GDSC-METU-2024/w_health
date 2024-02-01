@@ -1,11 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:w_health/chatbot/chatBot.dart';
-import 'package:w_health/chatbot/newUI.dart';
-import 'package:w_health/screens/home/doctor_rating/doctorList.dart';
-import 'package:w_health/services/login_service.dart';
-import 'screens/home/blog/blog.dart';
-import 'package:w_health/screens/home/maps/doctorMap.dart';
-import 'package:w_health/screens/login/loginPage.dart';
+import 'dart:ui';
+import 'utils/utils.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -19,75 +14,63 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        actions: [
-          IconButton(
-              onPressed: () => FirebaseUserAuthentication().logout(),
-              icon: Icon(Icons.logout)),
-        ],
-        title: Text('Home Page'),
+        title: const Text("Forum Page"),
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              'Welcome to the Home Page!',
-              style: TextStyle(fontSize: 20),
-            ),
-            SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => AINewUI()),
-                );
-                print('Button Pressed!');
-              },
-              child: Text('Go to GEMINI'),
-            ),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => LoginPage()),
-                );
-                print('Button Pressed!');
-              },
-              child: Text('Go to Login Page'),
-            ),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => MapUIcustom()),
-                );
-                print('Button Pressed!');
-              },
-              child: Text('Go to Map Page'),
-            ),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => BlogScreen()),
-                );
-                print('Button Pressed!');
-              },
-              child: Text('Go to blog Page'),
-            ),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => DoctorScreen()),
-                );
-                print('Button Pressed!');
-              },
-              child: Text('Go to doctor Page'),
-            ),
-          ],
-        ),
+      body: ListView(
+        children: [
+          forumRow(context, "Gynaecology", "34"),
+          forumRow(context, "Hair Loss", "62"),
+          forumRow(context, "Pregnancy", "112"),
+          forumRow(context, "Menopause", "40"),
+        ],
       ),
     );
   }
+}
+
+Widget forumRow(BuildContext context, String title, String count) {
+  double baseWidth = 430;
+  double fem = MediaQuery.of(context).size.width / baseWidth;
+  double ffem = fem * 0.97;
+  return Padding(
+    padding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
+    child: Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(15),
+        color: Colors.grey[300],
+      ),
+      height: 100,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Container(
+            // communicationchat8Vq (51:81)
+            margin:
+                EdgeInsets.fromLTRB(0 * fem, 0 * fem, 12.88 * fem, 6.74 * fem),
+            width: 23.25 * fem,
+            height: 23.26 * fem,
+            child: Icon(Icons.message),
+          ),
+          Container(
+            // hairloss3co (51:82)
+            margin: EdgeInsets.fromLTRB(0 * fem, 5 * fem, 150 * fem, 17 * fem),
+            child: Text(
+              title,
+              style: SafeGoogleFont(
+                'Poppins',
+                fontSize: 20 * ffem,
+                fontWeight: FontWeight.w400,
+                height: 1.5 * ffem / fem,
+                color: Color(0xff000000),
+              ),
+            ),
+          ),
+          Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [Text(count), Text("posts")],
+          ),
+        ],
+      ),
+    ),
+  );
 }
