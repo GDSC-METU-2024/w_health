@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:w_health/chatbot/chatBot.dart';
+import 'package:w_health/chatbot/newUI.dart';
 import 'package:w_health/screens/home/doctor_rating/doctorList.dart';
 import 'package:w_health/services/login_service.dart';
 import 'screens/home/blog/blog.dart';
@@ -38,7 +39,7 @@ class _HomePageState extends State<HomePage> {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => ChatBot()),
+                  MaterialPageRoute(builder: (context) => AINewUI()),
                 );
                 print('Button Pressed!');
               },
