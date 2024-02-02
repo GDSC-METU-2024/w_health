@@ -64,6 +64,7 @@ dependencies:
 
   #doctor rating
   flutter_rating_bar: ^4.0.1
+  readmore: ^2.1.0
 
 dev_dependencies:
   flutter_test:
