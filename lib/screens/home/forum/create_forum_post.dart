@@ -58,6 +58,7 @@ class _CreatePostState extends State<CreatePost> {
         postController.text,
         "$name",
         selectedCategory!,
+        [],
         DateTime.now(),
       )
           .then((value) {

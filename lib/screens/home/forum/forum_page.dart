@@ -37,6 +37,8 @@ class _ForumPageState extends State<ForumPage> {
                             message: post['status'],
                             user: post['user'],
                             time: post['createdAt'].toString(),
+                            postId: post.id,
+                            likes: List<String>.from(post['likes'] ?? []),
                           );
                         } else {
                           return SizedBox();

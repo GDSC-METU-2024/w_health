@@ -10,6 +10,7 @@ class ForumService {
     String status,
     String user,
     String category,
+    List<String> likes,
     DateTime createdAt,
   ) async {
     var ref = _firestore.collection("Status");
@@ -19,14 +20,16 @@ class ForumService {
       'user': user,
       'category': category,
       'createdAt': createdAt,
+      'likes': likes,
     });
 
     return Report(
-      id: documentRef.id,
+      postId: documentRef.id,
       status: status,
       user: user,
       category: category,
       createdAt: createdAt,
+      likes: likes,
     );
   }
 
@@ -43,7 +46,6 @@ class ForumService {
   //status silmek için
   Future<void> removeStatus(String docId) {
     var ref = _firestore.collection("Status").doc(docId).delete();
-
     return ref;
   }
 }
