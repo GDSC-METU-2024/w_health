@@ -21,10 +21,16 @@ class _HomePageState extends State<HomePage> {
       ),
       body: ListView(
         children: [
+          forumRow(context, "General women's health", "40"),
           forumRow(context, "Gynaecology", "34"),
+          forumRow(context, "Trans Woman Journey", "62"),
           forumRow(context, "Hair Loss", "62"),
           forumRow(context, "Pregnancy", "112"),
           forumRow(context, "Menopause", "40"),
+          forumRow(context, "Contraception", "40"),
+          forumRow(context, "Vagina and vulva health", "40"),
+          forumRow(context, "Period", "40"),
+          forumRow(context, "Womb and ovary health", "40"),
         ],
       ),
       floatingActionButton: FloatingActionButton(
@@ -57,7 +63,7 @@ Widget forumRow(BuildContext context, String title, String count) {
         ),
         height: 100,
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             Container(
               // communicationchat8Vq (51:81)
@@ -69,8 +75,7 @@ Widget forumRow(BuildContext context, String title, String count) {
             ),
             Container(
               // hairloss3co (51:82)
-              margin:
-                  EdgeInsets.fromLTRB(0 * fem, 5 * fem, 150 * fem, 17 * fem),
+              margin: EdgeInsets.fromLTRB(0 * fem, 5 * fem, 0 * fem, 17 * fem),
               child: Text(
                 title,
                 style: SafeGoogleFont(

@@ -15,11 +15,6 @@ class _BlogScreenState extends State<BlogScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back),
-          onPressed: () => Navigator.pop(context),
-          color: Colors.grey.shade800,
-        ),
         title: Text(
           "Blogs",
           style: TextStyle(
@@ -54,17 +49,6 @@ class _BlogScreenState extends State<BlogScreen> {
               color: Colors.grey,
             ),
           ),
-          Padding(
-            padding:
-                const EdgeInsets.symmetric(horizontal: 15.0, vertical: 10.0),
-            child: Text(
-              "blogs",
-              style: const TextStyle(
-                fontFamily: "Raleway",
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-          ),
           const SizedBox(
             height: 20.0,
           ),
@@ -74,7 +58,7 @@ class _BlogScreenState extends State<BlogScreen> {
               final post = data[index];
               return Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                child: BlogModelWidget(post),
+                child: blogModelWidget(post),
               );
             },
             separatorBuilder: (context, index) => const Padding(
@@ -88,7 +72,7 @@ class _BlogScreenState extends State<BlogScreen> {
     );
   }
 
-  Widget BlogModelWidget(DataModel data) {
+  Widget blogModelWidget(DataModel data) {
     return InkWell(
       onTap: () {
         Navigator.of(context).push(MaterialPageRoute(

@@ -27,14 +27,16 @@ class _CreatePostState extends State<CreatePost> {
   String? selectedCategory;
   var item_count = 0;
   List<String> categoryList = <String>[
-    "Ankara",
-    "İzmir",
-    "İstanbul",
-    "Antalya",
-    "City E",
-    "City F",
-    "City G",
-    "City H",
+    "General women's health",
+    "Gynaecology",
+    "Trans Woman Journey",
+    "Hair Loss",
+    "Pregnancy",
+    "Menopause",
+    "Contraception",
+    "Vagina and vulva health",
+    "Period",
+    "Womb and ovary health",
   ];
 
   FirebaseDocument() async {
