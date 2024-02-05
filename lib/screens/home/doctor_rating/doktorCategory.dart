@@ -51,6 +51,7 @@ class _DoctorCategoryState extends State<DoctorCategory> {
         ],
 
       ),
+
       body: SingleChildScrollView(
         child: Column(
           children: [

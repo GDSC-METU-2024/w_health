@@ -71,7 +71,19 @@ class _DoctorScreenState extends State<DoctorScreen> {
           ],
 
         ),
-
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => MapUIcustom(),
+              ),
+            );
+          },
+          foregroundColor: Colors.black,
+          backgroundColor: Color.fromRGBO(255, 196, 221, 1),
+          child: const Icon(Icons.map),
+        ),
         body: SingleChildScrollView(
           child:
           Column(
@@ -95,60 +107,7 @@ class _DoctorScreenState extends State<DoctorScreen> {
                 ],
               ),
             ),
-            /*Padding(
-              padding: const EdgeInsets.all(12.0),
-              child: DropdownButton<String>(
-                hint: Text(
-                  "which city",
-                ),
-                isExpanded: true,
-                value: selectedCity,
-                items: citiesList.map((String value) {
-                  return DropdownMenuItem<String>(
-                    value: value,
-                    child: Text(
-                      value,
-                    ),
-                  );
-                }).toList(),
-                onChanged: (_) {
-                  FocusScope.of(context).requestFocus(FocusNode());
-                  FocusScope.of(context).requestFocus(FocusNode());
-                  setState(() {
-                    selectedCity = _!;
-                    item_count = 0;
 
-                  });
-                },
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(12.0),
-              child: DropdownButton<String>(
-                hint: Text(
-                  "which gender",
-                ),
-                isExpanded: true,
-                value: selectedGender,
-                items: genderList.map((String value) {
-                  return DropdownMenuItem<String>(
-                    value: value,
-                    child: Text(
-                      value,
-                    ),
-                  );
-                }).toList(),
-                onChanged: (_) {
-                  FocusScope.of(context).requestFocus(FocusNode());
-                  FocusScope.of(context).requestFocus(FocusNode());
-                  setState(() {
-                    selectedGender = _!;
-                    item_count = 0;
-
-                  });
-                },
-              ),
-            ),*/
             const SizedBox(height: 12),
             Padding(
               padding: const EdgeInsets.all(4.0),
