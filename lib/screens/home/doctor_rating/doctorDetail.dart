@@ -130,6 +130,7 @@ class __DoctorDetailContentState extends State<_DoctorDetailContent> {
                     onRatingUpdate: (rating) {
                       print(rating);
                     },
+                    ignoreGestures: true,
                   ),
                   Text(
                     'Rating: ${(double.parse((double.parse(widget.doctor.Total_Rating) * 100).toStringAsFixed(0)) / 100).toStringAsFixed(2)} (${widget.doctor.User_Rated})',

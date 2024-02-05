@@ -5,6 +5,7 @@ import 'package:w_health/chatbot/geminiAI.dart';
 import 'package:w_health/chatbot/newUI.dart';
 import 'package:w_health/homePage.dart';
 import 'package:w_health/screens/home/blog/blog.dart';
+import 'package:w_health/screens/home/doctor_rating/doctorList.dart';
 import 'package:w_health/screens/home/maps/doctorMap.dart';
 import 'package:w_health/screens/profile/profile_page.dart';
 
@@ -17,7 +18,8 @@ class BottomNavBar extends StatefulWidget {
 
 class _BottomNavBarState extends State<BottomNavBar> {
   List Screens = [
-    MapUIcustom(),
+    //MapUIcustom(),
+    DoctorScreen(),
     AINewUI(),
     HomePage(),
     BlogScreen(),
