@@ -2,7 +2,11 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import "package:flutter/material.dart";
 import 'package:google_fonts/google_fonts.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:w_health/model/doctor_card_model.dart';
+import 'package:w_health/model/doctor_mini_model.dart';
 import 'package:w_health/screens/home/doctor_rating/doctorDetail.dart';
+import 'package:w_health/screens/home/doctor_rating/doktorCategory.dart';
+import 'package:w_health/screens/home/maps/doctorMap.dart';
 
 import '../../../services/doctor_service.dart';
 
@@ -36,36 +40,54 @@ class _DoctorScreenState extends State<DoctorScreen> {
     "Male",
   ];
 
+  List<String> categoryList = <String>[
+    "General physician",
+    "Gynaecologist",
+    "Obstetrician",
+    "Dermatologist",
+    "Orthopedist",
+    "Beast care specialist",
+    "Dietician",
+    "Dentist",
+    "Cardiologist",
+  ];
+
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     return Scaffold(
         appBar: AppBar(
-
-          elevation: 0,
-          backgroundColor: Colors.transparent,
-          title: Text(
-            "Doctor List",
-            style: GoogleFonts.prozaLibre(
-              color: Color(0xffe97d47),
-              fontSize: 25,
-              fontWeight: FontWeight.w600,
-              height: 1.355,
-            ),
+          leading: IconButton(
+            onPressed: () {},
+            icon: Icon(Icons.menu),
           ),
+          elevation: 0,
+          backgroundColor: Color.fromRGBO(255, 196, 221, 1),
+          actions: [
+            IconButton(
+              icon: Icon(Icons.search),
+              onPressed: () {           },
+            ),
+          ],
+
         ),
         floatingActionButton: FloatingActionButton(
-          // Go to CartPage
-          backgroundColor: Color(0xffe97d47),
-          onPressed: null,
-          child: const Icon(
-            Icons.add,
-            size: 35.0,
-          ),
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => MapUIcustom(),
+              ),
+            );
+          },
+          foregroundColor: Colors.black,
+          backgroundColor: Color.fromRGBO(255, 196, 221, 1),
+          child: const Icon(Icons.map),
         ),
         body: SingleChildScrollView(
           child:
-          Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+          Column(
+              children: [
             const SizedBox(height: 20),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 24.0),
@@ -73,10 +95,10 @@ class _DoctorScreenState extends State<DoctorScreen> {
                 children: [
                   Expanded(
                     child: Text(
-                      "choose your doctor",
+                      "Suggested Doctors",
                       style: GoogleFonts.nunitoSans(
                         fontSize: 16,
-                        fontWeight: FontWeight.w400,
+                        fontWeight: FontWeight.w700,
                         height: 1.3625,
                         color: Color(0xff000000),
                       ),
@@ -85,208 +107,126 @@ class _DoctorScreenState extends State<DoctorScreen> {
                 ],
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.all(12.0),
-              child: DropdownButton<String>(
-                hint: Text(
-                  "which city",
-                ),
-                isExpanded: true,
-                value: selectedCity,
-                items: citiesList.map((String value) {
-                  return DropdownMenuItem<String>(
-                    value: value,
-                    child: Text(
-                      value,
-                    ),
-                  );
-                }).toList(),
-                onChanged: (_) {
-                  FocusScope.of(context).requestFocus(FocusNode());
-                  FocusScope.of(context).requestFocus(FocusNode());
-                  setState(() {
-                    selectedCity = _!;
-                    item_count = 0;
 
-                  });
-                },
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(12.0),
-              child: DropdownButton<String>(
-                hint: Text(
-                  "which gender",
-                ),
-                isExpanded: true,
-                value: selectedGender,
-                items: genderList.map((String value) {
-                  return DropdownMenuItem<String>(
-                    value: value,
-                    child: Text(
-                      value,
-                    ),
-                  );
-                }).toList(),
-                onChanged: (_) {
-                  FocusScope.of(context).requestFocus(FocusNode());
-                  FocusScope.of(context).requestFocus(FocusNode());
-                  setState(() {
-                    selectedGender = _!;
-                    item_count = 0;
-
-                  });
-                },
-              ),
-            ),
             const SizedBox(height: 12),
-            StreamBuilder(
-              stream: _reportService.getStatus(),
-              builder: (context, snapshot) {
-                return !snapshot.hasData
-                    ? const CircularProgressIndicator()
-                    : ListView.builder(
-                  physics: const NeverScrollableScrollPhysics(),
-                  shrinkWrap: true,
-                  itemCount: snapshot.data!.docs.length,
-                  itemBuilder: (context, index) {
+            Padding(
+              padding: const EdgeInsets.all(4.0),
+              child: StreamBuilder(
+                stream: _reportService.getStatus(),
+                builder: (context, snapshot) {
+                  return !snapshot.hasData
+                      ? const CircularProgressIndicator()
+                      :Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Container(
+                            height: size.height * 0.27,
+                            child: ListView.builder(
+                            //physics: const NeverScrollableScrollPhysics(),
+                            shrinkWrap: true,
+                            scrollDirection: Axis.horizontal,
+                            itemCount: snapshot.data!.docs.length,
+                            itemBuilder: (context, index) {
+                              DocumentSnapshot myReport =
+                              snapshot.data!.docs[index];
 
-                    DocumentSnapshot myReport =
-                    snapshot.data!.docs[index];
+                              //if (myReport['City'] == selectedCity && myReport['Gender'] == selectedGender) {
+                                item_count += 1;
+                                return Padding(
+                                  padding: const EdgeInsets.all(4.0),
+                                  child: DoctorMini(myReport: myReport),
+                                );
 
-
-
-                    if (myReport['City'] == selectedCity && myReport['Gender'] == selectedGender) {
-                      item_count += 1;
-                      return Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: GestureDetector(
-                          onTap: () {
-                            // Handle the tap gesture here
-                            print(myReport.id);
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => DoctorDetail(id: myReport.id),
-                              ),
-                            );
-                          },
-                          child: Container(
-                          decoration: BoxDecoration(
-                            color: Colors.grey[300],
-                            borderRadius: const BorderRadius.all(
-                              Radius.circular(25),
-                            ),
+                            //return SizedBox(height: 5,);
+                                              },
+                                            ),
                           ),
-                          margin: const EdgeInsets.fromLTRB(
-                              3, 0, 3, 9),
-                          width: double.infinity,
-                          child: Padding(
-                            padding: const EdgeInsets.all(15.0),
-                            child: Column(
-                              children: [
-                                Row(
-                                  mainAxisAlignment:
-                                  MainAxisAlignment
-                                      .spaceBetween,
-                                  children: [
-                                    Row(
-                                      children: [
-                                        ClipRRect(
-                                          borderRadius: BorderRadius.circular(8.0),
-                                          child: Image.network(
-                                            myReport['Image'],
-                                            width: 100.0,
-                                            height: 100.0,
-                                            fit: BoxFit.cover,
-                                          ),
-                                        ),
-                                        const SizedBox(width: 10),
-                                        Text(
-                                          myReport['Name'],
-                                          style: const TextStyle(
-                                            fontWeight:
-                                            FontWeight.w700,
-                                          ),
-                                        )
-                                      ],
-                                    ),
-                                    Text(
-                                      myReport['Specialty'],
-                                      style: const TextStyle(
-                                          fontWeight:
-                                          FontWeight.w700,
-                                          fontSize: 12),
-                                    )
-                                  ],
-                                ),
-                                const SizedBox(height: 20),
-                                Text(
-                                  myReport['Description'],
-                                  maxLines: 2,
-                                  style: GoogleFonts.nunitoSans(
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.w400,
-                                    height: 1.3625,
-                                    color: Color(0xff000000),
-                                  ),
-                                ),
-                                SizedBox(height: 10),
-                                Row(
-                                  mainAxisAlignment:
-                                  MainAxisAlignment.end,
-                                  children: [
-                                    IconButton(
-                                      onPressed: () async{
-                                        String pnum = myReport['Phone'];
-                                        final _call="tel:$pnum";
-                                        if (await (canLaunch(_call))) {
-                                          await launch(_call);
-                                        }
-                                      },
-                                      icon: Icon(Icons.call),
-                                    ),
-                                    const SizedBox(width: 10),
-                                    IconButton(
-                                      onPressed: () async{
-                                        String pnum = myReport['Phone'];
-                                        final _sms="sms:$pnum";
-                                        if (await (canLaunch(_sms))) {
-                                          await launch(_sms);
-                                        }
-                                      },
-                                      icon: Icon(Icons.sms),
-                                    ),
-                                    const SizedBox(width: 10),
-                                    IconButton(
-                                      onPressed: () async {
-                                        GeoPoint _point =
-                                        myReport['Location'];
-                                        final _map =
-                                            'https://www.google.com/maps/search/?api=1&query=${_point.latitude},${_point.longitude}';
-                                        if (await (canLaunch(_map))) {
-                                          await launch(_map);
-                                        }
-                                      },
-                                      icon: Icon(Icons.location_on),
-                                    ),
-                                    const SizedBox(width: 10),
-
-                                  ],
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                        ),
+                        ],
                       );
-                    }
-                    return SizedBox(height: 5,);
-                  },
-                );
-              },
-            )
+                },
+              ),
+            ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 24.0),
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: Text(
+                          "Categories",
+                          style: GoogleFonts.nunitoSans(
+                            fontSize: 24,
+                            fontWeight: FontWeight.w700,
+                            height: 1.3625,
+                            color: Color(0xff000000),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Container(
+                  child: GridView.builder(
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2, // Number of columns
+                      childAspectRatio: size.width /
+                          (size.height / 4),
+                    ),
+                    itemCount: categoryList.length,
+                    itemBuilder: (context, index) {
+                      return Padding(
+                        padding: const EdgeInsets.all(18.0),
+                        child: categoryButton(categoryList[index]),
+                      );
+                    },
+                  ),
+                )
           ]),
         ));
   }
+  Widget categoryButton(String text) {
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10),
+        color: Colors.white,
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.withOpacity(0.5),
+            spreadRadius: 3,
+            blurRadius: 7,
+            offset: Offset(0, 3), // changes position of shadow
+          ),
+        ],
+      ),
+      child: ElevatedButton(
+          style: ButtonStyle(
+              shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                  RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10.0),
+                  )
+              )
+          ),
+        onPressed: () {
+          // Handle button click
+          print('anannn');
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => DoctorCategory(category: text),
+            ),
+          );
+        },
+        child: Text(text,
+          style: GoogleFonts.nunitoSans(
+            fontSize: 20,
+            fontWeight: FontWeight.w500,
+            height: 1.3625,
+            color: Color(0xff000000),
+          ),
+        ),
+      ),
+    );
+  }
 }
+
