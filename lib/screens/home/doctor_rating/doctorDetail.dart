@@ -3,7 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:readmore/readmore.dart';
 import 'package:w_health/model/doctor_model.dart';
-import 'package:w_health/model/comment_model.dart';
+import 'package:w_health/model/doctor_comment_model.dart';
 
 class DoctorDetail extends StatefulWidget {
   DoctorDetail({Key? key, required this.id}) : super(key: key);
@@ -66,7 +66,8 @@ class _DoctorDetailState extends State<DoctorDetail> {
 }
 
 class _DoctorDetailContent extends StatefulWidget {
-  _DoctorDetailContent({Key? key, required this.doctor, required this.id}) : super(key: key);
+  _DoctorDetailContent({Key? key, required this.doctor, required this.id})
+      : super(key: key);
 
   final Report_Doctor doctor;
   final String id;
@@ -152,16 +153,17 @@ class __DoctorDetailContentState extends State<_DoctorDetailContent> {
                   Row(
                     children: [
                       SizedBox(
-                        height:40, //height of button
-                        width:MediaQuery.of(context).size.width * 0.3, //width of button
-                        child:ElevatedButton(
-
-                        onPressed: () {
-                          print('Rating updated');
-                          showCommentDialog();
-                        },
-                        child: Text('Add Comment'),
-                      ),),
+                        height: 40, //height of button
+                        width: MediaQuery.of(context).size.width *
+                            0.3, //width of button
+                        child: ElevatedButton(
+                          onPressed: () {
+                            print('Rating updated');
+                            showCommentDialog();
+                          },
+                          child: Text('Add Comment'),
+                        ),
+                      ),
                       Padding(
                         padding: const EdgeInsets.all(5.0),
                         child: RatingBar.builder(
@@ -186,54 +188,64 @@ class __DoctorDetailContentState extends State<_DoctorDetailContent> {
                       ),
                     ],
                   ),
-                  SizedBox(height: 30,),
+                  SizedBox(
+                    height: 30,
+                  ),
                   StreamBuilder<QuerySnapshot>(
-                    stream: FirebaseFirestore.instance.collection('Doctors').doc(widget.id).collection("Comments")
-                      .orderBy("CommentTime", descending: true).snapshots(),
-                    builder: (context,snapshot){
-                      // show loading
-                      if(!snapshot.hasData){
-                        return const Center(
-                          child: CircularProgressIndicator(),
-                        );
-                      }
-
-                      return ListView(
-                        shrinkWrap: true,
-                        physics: const NeverScrollableScrollPhysics(),
-                        children: snapshot.data!.docs.map((doc) {
-                          final commentData = doc.data() as Map<String,dynamic>;
-
-
-                          return Comment(
-                            text: commentData["CommentText"],
-                            user: commentData["CommentedBy"],
-                            time: formDate(commentData["CommentTime"]),
-                            star: commentData["CommentRating"],
+                      stream: FirebaseFirestore.instance
+                          .collection('Doctors')
+                          .doc(widget.id)
+                          .collection("Comments")
+                          .orderBy("CommentTime", descending: true)
+                          .snapshots(),
+                      builder: (context, snapshot) {
+                        // show loading
+                        if (!snapshot.hasData) {
+                          return const Center(
+                            child: CircularProgressIndicator(),
                           );
-                        }).toList(),
-                      );
-                  })
+                        }
+
+                        return ListView(
+                          shrinkWrap: true,
+                          physics: const NeverScrollableScrollPhysics(),
+                          children: snapshot.data!.docs.map((doc) {
+                            final commentData =
+                                doc.data() as Map<String, dynamic>;
+
+                            return Comment(
+                              text: commentData["CommentText"],
+                              user: commentData["CommentedBy"],
+                              time: formDate(commentData["CommentTime"]),
+                              star: commentData["CommentRating"],
+                            );
+                          }).toList(),
+                        );
+                      })
                 ],
               ),
             ),
-
           ],
         ),
       ),
     );
   }
 
-  String formDate(Timestamp time){
+  String formDate(Timestamp time) {
     DateTime dateTime = time.toDate();
     String year = dateTime.year.toString();
     String month = dateTime.month.toString();
     String day = dateTime.day.toString();
-    String formdate = day + "/" + month +"/" + year;
+    String formdate = day + "/" + month + "/" + year;
     return formdate;
   }
+
   void addComment(String commentText) {
-    FirebaseFirestore.instance.collection('Doctors').doc(widget.id).collection("Comments").add(
+    FirebaseFirestore.instance
+        .collection('Doctors')
+        .doc(widget.id)
+        .collection("Comments")
+        .add(
       {
         "CommentText": commentText,
         "CommentedBy": "user",
@@ -304,11 +316,13 @@ class __DoctorDetailContentState extends State<_DoctorDetailContent> {
 
   void ratingCalculation() async {
     var doctor = widget.doctor;
-    double newTotRating = double.parse(doctor.Total_Rating) * doctor.User_Rated + newRating;
+    double newTotRating =
+        double.parse(doctor.Total_Rating) * doctor.User_Rated + newRating;
     doctor.User_Rated++;
     newTotRating /= doctor.User_Rated;
     doctor.Total_Rating = newTotRating.toString();
-    DocumentReference documentReference = FirebaseFirestore.instance.collection('Doctors').doc(widget.id);
+    DocumentReference documentReference =
+        FirebaseFirestore.instance.collection('Doctors').doc(widget.id);
     documentReference.update({
       "City": doctor.City,
       "Description": doctor.Description,
@@ -322,4 +336,3 @@ class __DoctorDetailContentState extends State<_DoctorDetailContent> {
     });
   }
 }
-

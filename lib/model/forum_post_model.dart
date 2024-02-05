@@ -1,12 +1,16 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:w_health/helper/helper_methods.dart';
+import 'package:w_health/model/forum_comment_model.dart';
+import 'package:w_health/utils/comment_button.dart';
 import 'package:w_health/utils/like_button.dart';
 
 class ForumPost extends StatefulWidget {
   final String user;
   final String message;
-  final String time;
+  final Timestamp time;
   final String postId;
   final List<String> likes;
   const ForumPost(
@@ -25,6 +29,7 @@ class ForumPost extends StatefulWidget {
 class _ForumPostState extends State<ForumPost> {
   final currentUser = FirebaseAuth.instance.currentUser!;
   bool isLiked = false;
+  final TextEditingController commentController = TextEditingController();
 
   @override
   void initState() {
@@ -50,58 +55,193 @@ class _ForumPostState extends State<ForumPost> {
     }
   }
 
+  void addComment(String comment) {
+    FirebaseFirestore.instance
+        .collection("Status")
+        .doc(widget.postId)
+        .collection("Comments")
+        .add({
+      'CommentText': comment,
+      'CommentedBy': currentUser.email,
+      'CommentTime': Timestamp.now(),
+    });
+  }
+
+  void showCommentDialog() {
+    showCupertinoDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: const Text("Add your comment"),
+        content: TextField(
+          controller: commentController,
+          decoration: const InputDecoration(hintText: "Write a comment.."),
+        ),
+        actions: [
+          TextButton(
+            onPressed: () {
+              Navigator.pop(context);
+              commentController.clear();
+            },
+            child: Text("Cancel"),
+          ),
+          TextButton(
+            onPressed: () {
+              addComment(commentController.text);
+              Navigator.pop(context);
+              commentController.clear();
+            },
+            child: Text("Save"),
+          ),
+        ],
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
           color: Colors.white, borderRadius: BorderRadius.circular(8)),
-      margin: EdgeInsets.only(left: 25, top: 25, right: 25),
-      padding: EdgeInsets.all(25),
-      child: Row(
+      margin: const EdgeInsets.only(left: 25, top: 25, right: 25),
+      padding: const EdgeInsets.all(25),
+      child: Column(
         children: [
-          Container(
-            decoration:
-                BoxDecoration(shape: BoxShape.circle, color: Colors.grey[400]),
-            padding: const EdgeInsets.all(10),
-            child: const Icon(
-              Icons.person,
-              color: Colors.white,
-            ),
-          ),
-          const SizedBox(
-            width: 20,
-          ),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+          Row(
             children: [
-              SizedBox(
-                width: 200,
-                child: Text(
-                  widget.user,
-                  style: TextStyle(color: Colors.grey[500]),
+              Container(
+                decoration: BoxDecoration(
+                    shape: BoxShape.circle, color: Colors.grey[400]),
+                padding: const EdgeInsets.all(10),
+                child: const Icon(
+                  Icons.person,
+                  color: Colors.white,
                 ),
               ),
               const SizedBox(
-                height: 10,
+                width: 20,
               ),
-              SizedBox(
-                child: Text(widget.message),
-                width: 150,
-              )
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  SizedBox(
+                    width: 150,
+                    child: Text(widget.message),
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  Row(
+                    children: [
+                      Text(
+                        widget.user,
+                        style: TextStyle(color: Colors.grey[500]),
+                      ),
+                      SizedBox(
+                        width: 10,
+                      ),
+                      Text(
+                        formatData(widget.time),
+                        style: TextStyle(color: Colors.grey[500]),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
             ],
           ),
-          Column(
+          SizedBox(
+            height: 15,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              LikeButton(
-                isLiked: isLiked,
-                onTap: toggleLike,
+              Column(
+                children: [
+                  LikeButton(
+                    isLiked: isLiked,
+                    onTap: toggleLike,
+                  ),
+                  const SizedBox(
+                    height: 5,
+                  ),
+                  Text(
+                    widget.likes.length.toString(),
+                    style: const TextStyle(
+                      color: Colors.grey,
+                    ),
+                  ),
+                ],
               ),
-              const SizedBox(
-                height: 5,
+              SizedBox(
+                width: 20,
               ),
-              Text(widget.likes.length.toString()),
+              Column(
+                children: [
+                  CommentButton(
+                    onTap: showCommentDialog,
+                  ),
+                  const SizedBox(
+                    height: 5,
+                  ),
+                  StreamBuilder<QuerySnapshot>(
+                    stream: FirebaseFirestore.instance
+                        .collection("Status")
+                        .doc(widget.postId)
+                        .collection("Comments")
+                        .orderBy("CommentTime", descending: true)
+                        .snapshots(),
+                    builder: (context, snapshot) {
+                      if (!snapshot.hasData) {
+                        return const CircularProgressIndicator();
+                      }
+                      List<ForumComment> list = snapshot.data!.docs.map((doc) {
+                        final commentData = doc.data() as Map<String, dynamic>;
+                        return ForumComment(
+                          comment: commentData["CommentText"],
+                          user: commentData["CommentedBy"],
+                          time: formatData(commentData["CommentTime"]),
+                        );
+                      }).toList();
+                      return Text(
+                        list.length.toString(),
+                        style: const TextStyle(
+                          color: Colors.grey,
+                        ),
+                      );
+                    },
+                  ),
+                ],
+              ),
             ],
-          )
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          StreamBuilder<QuerySnapshot>(
+            stream: FirebaseFirestore.instance
+                .collection("Status")
+                .doc(widget.postId)
+                .collection("Comments")
+                .orderBy("CommentTime", descending: true)
+                .snapshots(),
+            builder: (context, snapshot) {
+              if (!snapshot.hasData) {
+                return const CircularProgressIndicator();
+              }
+              return ListView(
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
+                children: snapshot.data!.docs.map((doc) {
+                  final commentData = doc.data() as Map<String, dynamic>;
+                  return ForumComment(
+                    comment: commentData["CommentText"],
+                    user: commentData["CommentedBy"],
+                    time: formatData(commentData["CommentTime"]),
+                  );
+                }).toList(),
+              );
+            },
+          ),
         ],
       ),
     );

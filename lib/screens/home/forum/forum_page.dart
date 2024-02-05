@@ -23,12 +23,12 @@ class _ForumPageState extends State<ForumPage> {
         child: Column(
           children: [
             Expanded(
-                child: StreamBuilder<QuerySnapshot>(
-              stream:
-                  FirebaseFirestore.instance.collection("Status").snapshots(),
-              builder: (context, snapshot) {
-                if (snapshot.hasData) {
-                  return ListView.builder(
+              child: StreamBuilder<QuerySnapshot>(
+                stream:
+                    FirebaseFirestore.instance.collection("Status").snapshots(),
+                builder: (context, snapshot) {
+                  if (snapshot.hasData) {
+                    return ListView.builder(
                       itemCount: snapshot.data!.docs.length,
                       itemBuilder: (context, index) {
                         final post = snapshot.data!.docs[index];
@@ -36,23 +36,25 @@ class _ForumPageState extends State<ForumPage> {
                           return ForumPost(
                             message: post['status'],
                             user: post['user'],
-                            time: post['createdAt'].toString(),
+                            time: post['createdAt'],
                             postId: post.id,
                             likes: List<String>.from(post['likes'] ?? []),
                           );
                         } else {
                           return SizedBox();
                         }
-                      });
-                } else {
-                  return Container(
-                    child: Center(
-                      child: Text("No posts available at this category."),
-                    ),
-                  );
-                }
-              },
-            ))
+                      },
+                    );
+                  } else {
+                    return Container(
+                      child: Center(
+                        child: Text("No posts available at this category."),
+                      ),
+                    );
+                  }
+                },
+              ),
+            )
           ],
         ),
       ),
