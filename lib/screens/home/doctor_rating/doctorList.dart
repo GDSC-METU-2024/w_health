@@ -5,6 +5,7 @@ import 'package:url_launcher/url_launcher.dart';
 import 'package:w_health/model/doctor_card_model.dart';
 import 'package:w_health/model/doctor_mini_model.dart';
 import 'package:w_health/screens/home/doctor_rating/doctorDetail.dart';
+import 'package:w_health/screens/home/doctor_rating/doktorCategory.dart';
 import 'package:w_health/screens/home/maps/doctorMap.dart';
 
 import '../../../services/doctor_service.dart';
@@ -46,8 +47,9 @@ class _DoctorScreenState extends State<DoctorScreen> {
     "Dermatologist",
     "Orthopedist",
     "Beast care specialist",
-    "Dietician"
-    "Dentist"
+    "Dietician",
+    "Dentist",
+    "Cardiologist",
   ];
 
   @override
@@ -69,15 +71,7 @@ class _DoctorScreenState extends State<DoctorScreen> {
           ],
 
         ),
-        floatingActionButton: FloatingActionButton(
-          // Go to CartPage
-          backgroundColor: Color(0xffe97d47),
-          onPressed: null,
-          child: const Icon(
-            Icons.add,
-            size: 35.0,
-          ),
-        ),
+
         body: SingleChildScrollView(
           child:
           Column(
@@ -167,7 +161,7 @@ class _DoctorScreenState extends State<DoctorScreen> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Container(
-                            height: MediaQuery.of(context).size.height * 0.27,
+                            height: size.height * 0.27,
                             child: ListView.builder(
                             //physics: const NeverScrollableScrollPhysics(),
                             shrinkWrap: true,
@@ -217,8 +211,8 @@ class _DoctorScreenState extends State<DoctorScreen> {
                     physics: const NeverScrollableScrollPhysics(),
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 2, // Number of columns
-                      childAspectRatio: MediaQuery.of(context).size.width /
-                          (MediaQuery.of(context).size.height / 4),
+                      childAspectRatio: size.width /
+                          (size.height / 4),
                     ),
                     itemCount: categoryList.length,
                     itemBuilder: (context, index) {
@@ -260,13 +254,13 @@ class _DoctorScreenState extends State<DoctorScreen> {
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => MapUIcustom(),
+              builder: (context) => DoctorCategory(category: text),
             ),
           );
         },
         child: Text(text,
           style: GoogleFonts.nunitoSans(
-            fontSize: 16,
+            fontSize: 20,
             fontWeight: FontWeight.w500,
             height: 1.3625,
             color: Color(0xff000000),
