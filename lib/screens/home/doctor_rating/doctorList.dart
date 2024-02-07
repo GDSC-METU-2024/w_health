@@ -20,22 +20,7 @@ class _DoctorScreenState extends State<DoctorScreen> {
   final FirebaseFirestore db = FirebaseFirestore.instance;
   String? selectedCity;
   String? selectedGender;
-  var item_count = 0;
-  List<String> citiesList = <String>[
-    "Ankara",
-    "Izmir",
-    "Istanbul",
-    "Antalya",
-    "City E",
-    "City F",
-    "City G",
-    "City H",
-  ];
 
-  List<String> genderList = <String>[
-    "Female",
-    "Male",
-  ];
 
   List<String> categoryList = <String>[
     "General physician",
@@ -129,7 +114,7 @@ class _DoctorScreenState extends State<DoctorScreen> {
                               DocumentSnapshot myReport =
                               sortedDocs[index];
                               //if (myReport['City'] == selectedCity && myReport['Gender'] == selectedGender) {
-                              item_count += 1;
+
                               return Padding(
                                 padding: const EdgeInsets.all(4.0),
                                 child: DoctorMini(myReport: myReport),
@@ -205,7 +190,7 @@ class _DoctorScreenState extends State<DoctorScreen> {
           ),
         onPressed: () {
           // Handle button click
-          print('anannn');
+          print(text);
           Navigator.push(
             context,
             MaterialPageRoute(
