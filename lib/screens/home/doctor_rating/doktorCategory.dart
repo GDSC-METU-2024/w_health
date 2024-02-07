@@ -19,7 +19,7 @@ class _DoctorCategoryState extends State<DoctorCategory> {
   String? selectedGender;
   var item_count = 0;
   List<String> citiesList = <String>[
-    "Ankara",
+    'Ankara',
     "Izmir",
     "Istanbul",
     "Antalya",
@@ -30,8 +30,8 @@ class _DoctorCategoryState extends State<DoctorCategory> {
   ];
 
   List<String> genderList = <String>[
-    "Female",
-    "Male",
+    'Female',
+    'Male',
   ];
 
   @override
@@ -130,41 +130,29 @@ class _DoctorCategoryState extends State<DoctorCategory> {
             Padding(
               padding: const EdgeInsets.all(4.0),
               child: StreamBuilder(
-                stream: _reportService.getStatus(),
-                builder: (context, snapshot) {
-                  return !snapshot.hasData
-                      ? const CircularProgressIndicator()
-                      :Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Container(
-                        child: ListView.builder(
-                          physics: const NeverScrollableScrollPhysics(),
-                          shrinkWrap: true,
-                          itemCount: snapshot.data!.docs.length,
-                          itemBuilder: (context, index) {
-                            DocumentSnapshot myReport =
-                            snapshot.data!.docs[index];
-
-                            //if (myReport['City'] == "Ankara" && myReport['Gender'] == "Male") {
-                            if(myReport["Specialty"] == widget.category){
-                              if(myReport['City'] ==  selectedCity && myReport['Gender'] == selectedGender){
-                                item_count += 1;
-                                return Padding(
-                                  padding: const EdgeInsets.all(4.0),
-                                  child: DoctorCard(myReport: myReport),
-                                );
-                              }
-                            }
-
-                            //return SizedBox(height: 5,);
-                          },
-                        ),
+                        stream: _reportService.getStatus(),
+                        builder: (context, snapshot) {
+                          return !snapshot.hasData
+                              ? const CircularProgressIndicator()
+                              :ListView.builder(
+                                physics: const NeverScrollableScrollPhysics(),
+                                shrinkWrap: true,
+                                itemCount: snapshot.data!.docs.length,
+                                itemBuilder: (context, index) {
+                                  DocumentSnapshot myReport = snapshot.data!.docs[index];
+                                  //if (myReport['City'] == selectedCity) { //myReport['City'] == selectedCity && myReport['Gender'] == selectedGender
+                                    print(myReport['Gender']);
+                                    return (((selectedCity==null) || myReport['City'] == selectedCity )
+                                        && ((selectedGender==null) ||myReport['Gender'] == selectedGender)
+                                        && (myReport['Specialty'] == widget.category))
+                                        ?DoctorCard(myReport: myReport)
+                                        : Container(height: 0,);
+                                  //}
+                                },
+                              );
+                        },
                       ),
-                    ],
-                  );
-                },
-              ),
+
             ),
           ],
         ),
