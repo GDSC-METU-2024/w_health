@@ -9,6 +9,8 @@ import 'package:w_health/screens/home/doctor_rating/doctorList.dart';
 import 'package:w_health/screens/home/maps/doctorMap.dart';
 import 'package:w_health/screens/profile/profile_page.dart';
 
+import '../screens/profile/new_profile_page.dart';
+
 class BottomNavBar extends StatefulWidget {
   const BottomNavBar({Key? key}) : super(key: key);
 
@@ -23,7 +25,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
     AINewUI(),
     HomePage(),
     BlogScreen(),
-    ProfilePage(),
+    ProfileScreen(),
   ];
   int _selectedIndex = 2;
   @override

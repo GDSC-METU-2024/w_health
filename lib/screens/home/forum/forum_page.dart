@@ -46,10 +46,8 @@ class _ForumPageState extends State<ForumPage> {
                       },
                     );
                   } else {
-                    return Container(
-                      child: Center(
-                        child: Text("No posts available at this category."),
-                      ),
+                    return Center(
+                      child: Text("No posts available at this category."),
                     );
                   }
                 },
