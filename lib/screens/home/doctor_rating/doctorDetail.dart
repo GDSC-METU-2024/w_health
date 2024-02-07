@@ -2,8 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:readmore/readmore.dart';
-import 'package:w_health/model/doctor_model.dart';
-import 'package:w_health/model/doctor_comment_model.dart';
+import 'package:w_health/screens/home/doctor_rating/showAllComments.dart';
+import 'package:w_health/utils/doctor_utils/doctor_comment_model.dart';
+import 'package:w_health/utils/doctor_utils/doctor_model.dart';
+import 'package:w_health/utils/progressIndicator.dart';
+
 
 class DoctorDetail extends StatefulWidget {
   DoctorDetail({Key? key, required this.id}) : super(key: key);
@@ -115,29 +118,67 @@ class __DoctorDetailContentState extends State<_DoctorDetailContent> {
                     ),
                   ),
                   SizedBox(height: 8.0),
-                  RatingBar.builder(
-                    initialRating: double.parse(widget.doctor.Total_Rating),
-                    itemSize: 20,
-                    minRating: 1,
-                    direction: Axis.horizontal,
-                    wrapAlignment: WrapAlignment.end,
-                    allowHalfRating: true,
-                    itemCount: 5,
-                    itemPadding: EdgeInsets.symmetric(horizontal: 1.0),
-                    itemBuilder: (context, _) => Icon(
-                      Icons.star,
-                      color: Colors.amber,
-                    ),
-                    onRatingUpdate: (rating) {
-                      print(rating);
-                    },
-                    ignoreGestures: true,
+
+                  Row(
+                    children: [
+                      const Expanded(
+                        flex: 7,
+                        child:Column(
+                          children: [
+                            TRatingProgressIndicator(text:'5',value:1.0),
+                            TRatingProgressIndicator(text:'4',value:0.8),
+                            TRatingProgressIndicator(text:'3',value:0.6),
+                            TRatingProgressIndicator(text:'2',value:0.4),
+                            TRatingProgressIndicator(text:'1',value:0.2),
+                          ],
+                        ),
+                      ),
+                      Expanded(flex:3, child:
+                        Column(
+                          children: [
+                            Text(
+                              '${(double.parse((double.parse(widget.doctor.Total_Rating) * 100).toStringAsFixed(0)) / 100).toStringAsFixed(1)}',
+                              style: Theme.of(context).textTheme.displayLarge
+                            ),
+                            RatingBar.builder(
+                              initialRating: double.parse(widget.doctor.Total_Rating),
+                              itemSize: 20,
+                              minRating: 1,
+                              direction: Axis.horizontal,
+                              wrapAlignment: WrapAlignment.end,
+                              allowHalfRating: true,
+                              itemCount: 5,
+                              itemPadding: EdgeInsets.symmetric(horizontal: 0.6),
+                              itemBuilder: (context, _) => Icon(
+                                Icons.star,
+                                color: Colors.amber,
+                              ),
+                              onRatingUpdate: (rating) {
+                                print(rating);
+                              },
+                              ignoreGestures: true,
+                            ),
+                          ],
+                        ),
+                      ),
+
+                    ],
+                  ),
+                  SizedBox(
+                    height: 15,
+                  ),
+                  Container(
+                    height: 3.0,
+                    color: Colors.grey[200],
+                  ),
+                  SizedBox(
+                    height: 15,
                   ),
                   Text(
-                    'Rating: ${(double.parse((double.parse(widget.doctor.Total_Rating) * 100).toStringAsFixed(0)) / 100).toStringAsFixed(2)} (${widget.doctor.User_Rated})',
+                    "About...",
                     style: TextStyle(
-                      fontSize: 18.0,
-                      color: Colors.green,
+                      fontSize: 24.0,
+                      fontWeight: FontWeight.normal,
                     ),
                   ),
                   SizedBox(height: 16.0),
@@ -150,7 +191,16 @@ class __DoctorDetailContentState extends State<_DoctorDetailContent> {
                     trimExpandedText: 'Show less',
                     moreStyle: TextStyle(fontSize: 16),
                   ),
-                  SizedBox(height: 16.0),
+                  SizedBox(
+                    height: 15,
+                  ),
+                  Container(
+                    height: 3.0,
+                    color: Colors.grey[200],
+                  ),
+                  SizedBox(
+                    height: 15,
+                  ),
                   Row(
                     children: [
                       SizedBox(
@@ -190,8 +240,45 @@ class __DoctorDetailContentState extends State<_DoctorDetailContent> {
                     ],
                   ),
                   SizedBox(
-                    height: 30,
+                    height: 15,
                   ),
+                  Container(
+                    height: 3.0,
+                    color: Colors.grey[200],
+                  ),
+                  SizedBox(
+                    height: 15,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children:[
+                    Text(
+                      "Ratings & Reviews (${widget.doctor.User_Rated})",
+                      style: TextStyle(
+                        fontSize: 24.0,
+                        fontWeight: FontWeight.normal,
+                      ),
+                    ),
+                      GestureDetector(
+                        child: Text(
+                          "See All",
+                          style: TextStyle(
+                            color: Colors.blueAccent,
+                            fontSize: 18.0,
+                          ),
+                        ),
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => showAllComments(doctor:widget.doctor,id:widget.id),
+                            ),
+                          );
+                        }
+                      )
+                    ]
+                  ),
+                  SizedBox(height: 16,),
                   StreamBuilder<QuerySnapshot>(
                       stream: FirebaseFirestore.instance
                           .collection('Doctors')
@@ -206,11 +293,12 @@ class __DoctorDetailContentState extends State<_DoctorDetailContent> {
                             child: CircularProgressIndicator(),
                           );
                         }
-
+                        final List<DocumentSnapshot> comments =
+                        snapshot.data!.docs.take(3).toList();
                         return ListView(
                           shrinkWrap: true,
                           physics: const NeverScrollableScrollPhysics(),
-                          children: snapshot.data!.docs.map((doc) {
+                          children: comments.map((doc) {
                             final commentData =
                                 doc.data() as Map<String, dynamic>;
 
@@ -337,3 +425,5 @@ class __DoctorDetailContentState extends State<_DoctorDetailContent> {
     });
   }
 }
+
+

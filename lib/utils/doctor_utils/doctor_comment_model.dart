@@ -43,9 +43,8 @@ class Comment extends StatelessWidget {
                   Icons.star,
                   color: Colors.amber,
                 ),
-                onRatingUpdate: (rating) {
-
-                },
+                ignoreGestures: true,
+                onRatingUpdate: (rating) {},
               ),
             ],
           )

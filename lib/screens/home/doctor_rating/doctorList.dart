@@ -1,12 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import "package:flutter/material.dart";
 import 'package:google_fonts/google_fonts.dart';
-import 'package:url_launcher/url_launcher.dart';
-import 'package:w_health/model/doctor_card_model.dart';
-import 'package:w_health/model/doctor_mini_model.dart';
-import 'package:w_health/screens/home/doctor_rating/doctorDetail.dart';
 import 'package:w_health/screens/home/doctor_rating/doktorCategory.dart';
 import 'package:w_health/screens/home/maps/doctorMap.dart';
+import 'package:w_health/utils/doctor_utils/doctor_mini_model.dart';
 
 import '../../../services/doctor_service.dart';
 
@@ -127,19 +124,18 @@ class _DoctorScreenState extends State<DoctorScreen> {
                             scrollDirection: Axis.horizontal,
                             itemCount: snapshot.data!.docs.length,
                             itemBuilder: (context, index) {
+                              List<DocumentSnapshot> sortedDocs = List.from(snapshot.data!.docs);
+                              sortedDocs.sort((b,a) => a['Total_Rating'].compareTo(b['Total_Rating'])); //sort doctors according to their rating
                               DocumentSnapshot myReport =
-                              snapshot.data!.docs[index];
-
+                              sortedDocs[index];
                               //if (myReport['City'] == selectedCity && myReport['Gender'] == selectedGender) {
-                                item_count += 1;
-                                return Padding(
-                                  padding: const EdgeInsets.all(4.0),
-                                  child: DoctorMini(myReport: myReport),
-                                );
-
-                            //return SizedBox(height: 5,);
-                                              },
-                                            ),
+                              item_count += 1;
+                              return Padding(
+                                padding: const EdgeInsets.all(4.0),
+                                child: DoctorMini(myReport: myReport),
+                              );
+                              },
+                            ),
                           ),
                         ],
                       );

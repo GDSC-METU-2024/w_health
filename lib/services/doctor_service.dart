@@ -1,5 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:w_health/model/doctor_model.dart';
+import 'package:w_health/utils/doctor_utils/doctor_model.dart';
 
 class ReportDoctorService {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;

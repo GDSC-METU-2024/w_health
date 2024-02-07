@@ -1,9 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:w_health/model/doctor_card_model.dart';
-import 'package:w_health/model/doctor_mini_model.dart';
 import 'package:w_health/services/doctor_service.dart';
+import 'package:w_health/utils/doctor_utils/doctor_card_model.dart';
 
 class DoctorCategory extends StatefulWidget {
   final String category;
