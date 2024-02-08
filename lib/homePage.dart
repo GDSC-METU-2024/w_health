@@ -30,7 +30,19 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: IconButton(
+          onPressed: () {},
+          icon: const Icon(Icons.menu),
+        ),
+        elevation: 0,
         title: const Text("Forum Page"),
+        backgroundColor: Color.fromRGBO(255, 196, 221, 1),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.search),
+            onPressed: () {},
+          ),
+        ],
       ),
       body: ListView(
         children: [
@@ -106,7 +118,7 @@ Widget forumRow(BuildContext context, String title, Future<int> postCount) {
     builder: (BuildContext context, AsyncSnapshot<int> snapshot) {
       if (snapshot.connectionState == ConnectionState.waiting) {
         // Future is still loading
-        return CircularProgressIndicator(); // You can replace this with a loading indicator
+        return SizedBox(); // You can replace this with a loading indicator
       } else if (snapshot.hasError) {
         // Future threw an error
         return Text('Error: ${snapshot.error}');

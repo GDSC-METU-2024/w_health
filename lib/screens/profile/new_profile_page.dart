@@ -1,4 +1,8 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:w_health/screens/profile/posts/user_posts.dart';
 import 'package:w_health/utils/utils.dart';
 
 class ProfileScreen extends StatefulWidget {
@@ -9,6 +13,71 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
+  final user = FirebaseAuth.instance.currentUser!;
+  final FirebaseFirestore db = FirebaseFirestore.instance;
+  String username = "";
+
+  void firebaseDocument() async {
+    var document = await db.collection('Person').doc(user.uid).get();
+    Map<String, dynamic>? value = document.data();
+    if (this.mounted) {
+      setState(() {
+        String a = value!['name'];
+        username = a;
+      });
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    firebaseDocument();
+  }
+
+  signUserOut() async {
+    Navigator.pop(context);
+    await FirebaseAuth.instance.signOut();
+  }
+
+  Future<void> popUp() {
+    return showCupertinoDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: const Text(
+          "Do you really want to log out?",
+          style: TextStyle(fontSize: 17),
+        ),
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(
+            Radius.circular(10),
+          ),
+        ),
+        content: Row(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+            InkWell(
+              onTap: signUserOut,
+              child: Text(
+                "Yes",
+                style: TextStyle(color: lilia),
+              ),
+            ),
+            const SizedBox(width: 15),
+            InkWell(
+              onTap: () => Navigator.pop(context),
+              child: Text(
+                "No",
+                style: TextStyle(
+                  color: lilia,
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     double baseWidth = 430;
@@ -59,6 +128,34 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       ),
                     ),
                   ),
+                  Positioned(
+                    left: 118 * fem,
+                    top: 265 * fem,
+                    child: Align(
+                      child: Text(
+                        user.email!,
+                        style: TextStyle(
+                          fontFamily: "Raleway",
+                          fontWeight: FontWeight.bold,
+                          color: Theme.of(context).colorScheme.tertiary,
+                        ),
+                      ),
+                    ),
+                  ),
+                  Positioned(
+                    left: 140 * fem,
+                    top: 240 * fem,
+                    child: Align(
+                      child: Text(
+                        username,
+                        style: TextStyle(
+                          fontFamily: "Raleway",
+                          fontWeight: FontWeight.bold,
+                          color: Theme.of(context).colorScheme.tertiary,
+                        ),
+                      ),
+                    ),
+                  ),
                 ],
               ),
             ),
@@ -69,15 +166,21 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(10),
               ),
-              child: const Column(
+              child: Column(
                 children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      Icon(Icons.all_inbox),
-                      Text("Posts"),
-                      Icon(Icons.arrow_forward_ios)
-                    ],
+                  GestureDetector(
+                    onTap: () => Navigator.push(
+                        context,
+                        CupertinoPageRoute(
+                            builder: (context) => UserPostsPage())),
+                    child: const Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        Icon(Icons.all_inbox),
+                        Text("My Posts"),
+                        Icon(Icons.arrow_forward_ios)
+                      ],
+                    ),
                   ),
                   SizedBox(
                     height: 20,
@@ -106,7 +209,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(10),
               ),
-              child: const Column(
+              child: Column(
                 children: [
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -176,18 +279,21 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   SizedBox(
                     height: 20,
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      SizedBox(
-                        width: 30,
-                      ),
-                      Icon(Icons.logout),
-                      SizedBox(
-                        width: 60,
-                      ),
-                      Text("Log out"),
-                    ],
+                  GestureDetector(
+                    onTap: popUp,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        SizedBox(
+                          width: 30,
+                        ),
+                        Icon(Icons.logout),
+                        SizedBox(
+                          width: 60,
+                        ),
+                        Text("Log out"),
+                      ],
+                    ),
                   ),
                 ],
               ),
