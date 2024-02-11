@@ -1,3 +1,6 @@
 #ignoring specific file
 lib/chatbot/geminiAI.dart
 /lib/chatbot/geminiAI.dart
+
+lib/services/push_notifications.dart
+/lib/services/push_notifications.dart
