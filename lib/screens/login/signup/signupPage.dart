@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:w_health/services/auth_service.dart';
@@ -27,9 +28,11 @@ class _SignUpPageState extends State<SignUpPage> {
         nameController.text.isNotEmpty &&
         confirmPasswordController.text.isNotEmpty) {
       try {
-        await _auth.createUserWithEmailAndPassword(
-            email: emailController.text.trim(),
-            password: passwordController.text.trim());
+        await FirebaseUserAuthentication().createPerson(
+          nameController.text,
+          emailController.text,
+          passwordController.text,
+        );
       } on FirebaseAuthException catch (e) {
         errorMessage(e.code);
       }
@@ -241,13 +244,7 @@ class _SignUpPageState extends State<SignUpPage> {
                               padding: EdgeInsets.zero,
                             ),
                             child: GestureDetector(
-                              onTap: () async {
-                                await FirebaseUserAuthentication().createPerson(
-                                  nameController.text,
-                                  emailController.text,
-                                  passwordController.text,
-                                );
-                              },
+                              onTap: signUserUp,
                               child: Container(
                                 width: double.infinity,
                                 height: 60 * fem,
