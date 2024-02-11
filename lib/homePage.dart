@@ -1,10 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:w_health/screens/home/forum/create_forum_post.dart';
 import 'package:w_health/screens/home/forum/forum_page.dart';
-import 'dart:ui';
+import 'package:w_health/services/push_notifications.dart';
 import 'utils/utils.dart';
 
 class HomePage extends StatefulWidget {
@@ -24,6 +24,16 @@ class _HomePageState extends State<HomePage> {
       }
     }
     return result;
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    FirebaseMessaging.instance.getInitialMessage();
+    FirebaseMessaging.onMessage
+        .listen((message) => LocalNotificationService.display(message));
+    LocalNotificationService.storeToken();
   }
 
   @override

@@ -4,6 +4,7 @@ class Report {
   String postId;
   String status;
   String user;
+  String? userToken;
   String category;
   List<String> likes;
   DateTime createdAt;
@@ -12,6 +13,7 @@ class Report {
       {required this.postId,
       required this.status,
       required this.user,
+      required this.userToken,
       required this.category,
       required this.likes,
       required this.createdAt});
@@ -21,6 +23,7 @@ class Report {
       postId: snapshot.id,
       status: snapshot["status"],
       user: snapshot["user"],
+      userToken: snapshot["userToken"],
       category: snapshot["category"],
       createdAt: snapshot["createdAt"],
       likes: snapshot["likes"],

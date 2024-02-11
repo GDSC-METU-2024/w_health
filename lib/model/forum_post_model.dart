@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:w_health/helper/helper_methods.dart';
 import 'package:w_health/model/forum_comment_model.dart';
+import 'package:w_health/services/push_notifications.dart';
 import 'package:w_health/utils/comment_button.dart';
 import 'package:w_health/utils/like_button.dart';
 
@@ -38,12 +39,23 @@ class _ForumPostState extends State<ForumPost> {
   }
 
   void toggleLike() {
+    User? user = FirebaseAuth.instance.currentUser;
+    String fcmToken = "";
     setState(() {
       isLiked = !isLiked;
     });
 
     DocumentReference postRef =
         FirebaseFirestore.instance.collection("Status").doc(widget.postId);
+
+    postRef.get().then(
+      (DocumentSnapshot doc) {
+        final data = doc.data() as Map<String, dynamic>;
+        fcmToken = data["userToken"];
+      },
+      onError: (e) => print("Error getting document: $e"),
+    );
+
     if (isLiked) {
       postRef.update({
         'likes': FieldValue.arrayUnion([currentUser.email])
@@ -53,9 +65,26 @@ class _ForumPostState extends State<ForumPost> {
         'likes': FieldValue.arrayRemove([currentUser.email])
       });
     }
+
+    LocalNotificationService.sendNotification(
+        "New Like", "${user!.email} liked your post.", fcmToken);
   }
 
   void addComment(String comment) {
+    User? user = FirebaseAuth.instance.currentUser;
+    String fcmToken = "";
+
+    DocumentReference postRef =
+        FirebaseFirestore.instance.collection("Status").doc(widget.postId);
+
+    postRef.get().then(
+      (DocumentSnapshot doc) {
+        final data = doc.data() as Map<String, dynamic>;
+        fcmToken = data["userToken"];
+      },
+      onError: (e) => print("Error getting document: $e"),
+    );
+
     FirebaseFirestore.instance
         .collection("Status")
         .doc(widget.postId)
@@ -65,6 +94,9 @@ class _ForumPostState extends State<ForumPost> {
       'CommentedBy': currentUser.email,
       'CommentTime': Timestamp.now(),
     });
+
+    LocalNotificationService.sendNotification(
+        "New Comment", "${user!.email} commented on your post.", fcmToken);
   }
 
   void showCommentDialog() {

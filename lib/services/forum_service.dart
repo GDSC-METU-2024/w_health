@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import '../model/report_model.dart';
@@ -14,10 +15,12 @@ class ForumService {
     DateTime createdAt,
   ) async {
     var ref = _firestore.collection("Status");
+    String? token = await FirebaseMessaging.instance.getToken();
 
     var documentRef = await ref.add({
       'status': status,
       'user': user,
+      'userToken': token,
       'category': category,
       'createdAt': createdAt,
       'likes': likes,
@@ -27,6 +30,7 @@ class ForumService {
       postId: documentRef.id,
       status: status,
       user: user,
+      userToken: token,
       category: category,
       createdAt: createdAt,
       likes: likes,
