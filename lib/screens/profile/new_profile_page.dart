@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:w_health/screens/profile/medicine/medicinePage.dart';
 import 'package:w_health/screens/profile/posts/user_posts.dart';
 import 'package:w_health/utils/utils.dart';
 
@@ -178,6 +179,20 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       children: [
                         Icon(Icons.all_inbox),
                         Text("My Posts"),
+                        Icon(Icons.arrow_forward_ios)
+                      ],
+                    ),
+                  ),
+                  GestureDetector(
+                    onTap: () => Navigator.push(
+                        context,
+                        CupertinoPageRoute(
+                            builder: (context) => MedicinePage())),
+                    child: const Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        Icon(Icons.medical_services_outlined),
+                        Text("My medicines"),
                         Icon(Icons.arrow_forward_ios)
                       ],
                     ),

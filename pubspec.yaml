@@ -45,7 +45,7 @@ dependencies:
   firebase_auth: ^4.16.0
   google_sign_in: ^6.2.1
   firebase_messaging: ^14.7.15
-  flutter_local_notifications: ^16.3.2
+  flutter_local_notifications: ^15.1.1
 
   #misc
   image_picker: ^1.0.0
@@ -68,6 +68,8 @@ dependencies:
   #doctor rating
   flutter_rating_bar: ^4.0.1
   readmore: ^2.1.0
+  flutter_timezone: ^1.0.8
+  rxdart: ^0.27.7
 
 dev_dependencies:
   flutter_launcher_icons: "^0.13.1"
