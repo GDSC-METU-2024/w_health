@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:w_health/local_notification/local_notifications.dart';
+import 'package:w_health/screens/profile/medicine/medicine_widget.dart';
 
 class MedicinePage extends StatefulWidget {
   const MedicinePage({super.key});
@@ -9,6 +10,14 @@ class MedicinePage extends StatefulWidget {
 }
 
 class _MedicinePageState extends State<MedicinePage> {
+
+  final List<Medicine> medicineList = [
+    Medicine(name: 'Medicine A', period: 0, id: 1, gram: 250.0),
+    Medicine(name: 'Medicine B', period: 7, id: 2, gram: 500.0),
+    Medicine(name: 'Medicine C', period: 1, id: 3, gram: 750.0),
+  ];
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,6 +41,22 @@ class _MedicinePageState extends State<MedicinePage> {
                 },
                 icon: Icon(Icons.notification_add),
                 label: Text('Periodic')
+            ),
+            ElevatedButton.icon(
+                onPressed: (){
+                  LocalNotifications.cancel(1);
+                },
+                icon: Icon(Icons.cancel),
+                label: Text('Periodic cancel')
+            ),
+            Container(
+              child: ListView.builder(
+                shrinkWrap: true,
+                itemCount: medicineList.length,
+                itemBuilder: (context, index) {
+                  return MedicineInfoWidget(medicine: medicineList[index],);
+                },
+              ),
             ),
           ],
         ),

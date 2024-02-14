@@ -107,6 +107,7 @@ flutter:
     - assets/page-1/images/
     - assets/blogs/images/
     - assets/chatbot/images/
+    - assets/medicine/images/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
