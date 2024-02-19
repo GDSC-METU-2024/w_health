@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:w_health/local_notification/local_notifications.dart';
+import 'package:w_health/local_notification/local_notification.dart';
 
 class Medicine {
   final String name;

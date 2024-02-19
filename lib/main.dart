@@ -1,7 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
-import 'package:w_health/local_notification/local_notifications.dart';
+import 'package:w_health/local_notification/local_notification.dart';
 import 'package:w_health/screens/login/authPage.dart';
 import 'package:w_health/firebase_options.dart';
 import 'package:shared_preferences/shared_preferences.dart';
