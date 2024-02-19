@@ -15,7 +15,7 @@ class MapUIcustom extends StatefulWidget {
 
 class _MapUIStatecustom extends State<MapUIcustom> {
   CustomInfoWindowController _customInfoWindowController =
-  CustomInfoWindowController();
+      CustomInfoWindowController();
 
   final LatLng _latLng = LatLng(39.9333651, 32.859741);
   final double _zoom = 15.0;
@@ -56,13 +56,13 @@ class _MapUIStatecustom extends State<MapUIcustom> {
       if (docs.docs.isNotEmpty) {
         for (int i = 0; i < docs.docs.length; ++i) {
           //clients.add(docs.docs[i].data);
-          loadData(docs.docs[i].data, i,docs.docs[i].id);
+          loadData(docs.docs[i].data, i, docs.docs[i].id);
         }
       }
     });
   }
 
-  loadData(fireBase, i,id) {
+  loadData(fireBase, i, id) {
     _markers.add(
       Marker(
         markerId: MarkerId("$i"),
@@ -97,7 +97,7 @@ class _MapUIStatecustom extends State<MapUIcustom> {
                   ),
                   Padding(
                     padding:
-                    const EdgeInsets.only(top: 10, left: 10, right: 10),
+                        const EdgeInsets.only(top: 10, left: 10, right: 10),
                     child: Row(
                       children: [
                         SizedBox(
@@ -111,8 +111,10 @@ class _MapUIStatecustom extends State<MapUIcustom> {
                         ),
                         const Spacer(),
                         //Text(fireBase()['Total_Rating'])
-                        RatingBar.builder( //Rating bar
-                          initialRating: double.parse(fireBase()['Total_Rating']),
+                        RatingBar.builder(
+                          //Rating bar
+                          initialRating:
+                              double.parse(fireBase()['Total_Rating']),
                           itemSize: 20,
                           minRating: 1,
                           direction: Axis.horizontal,
@@ -133,40 +135,36 @@ class _MapUIStatecustom extends State<MapUIcustom> {
                   ),
                   Padding(
                       padding:
-                      const EdgeInsets.only(top: 10, left: 10, right: 10),
+                          const EdgeInsets.only(top: 10, left: 10, right: 10),
                       child: Text(
                         fireBase()['Description'],
                         maxLines: 2,
-                      )
-                  ),
+                      )),
                   Padding(
-                      padding:
-                      const EdgeInsets.only(top: 10, left: 10, right: 15,bottom: 10),
+                      padding: const EdgeInsets.only(
+                          top: 10, left: 10, right: 15, bottom: 10),
                       child: GestureDetector(
-                        onTap: () {
-                          // Go to doctor page
-                          print('Text Clicked!');
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => DoctorDetail(id: id),
+                          onTap: () {
+                            // Go to doctor page
+                            print('Text Clicked!');
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => DoctorDetail(id: id),
+                              ),
+                            );
+                          },
+                          child: const Align(
+                            alignment: Alignment.centerRight,
+                            child: Text(
+                              'Explore more!',
+                              style: TextStyle(
+                                fontSize: 15.0,
+                                color: Colors.blue,
+                                decoration: TextDecoration.underline,
+                              ),
                             ),
-                          );
-                        },
-                        child: const Align(
-                          alignment: Alignment.centerRight,
-                          child:Text(
-                            'Explore more!',
-                            style: TextStyle(
-                              fontSize: 15.0,
-                              color: Colors.blue,
-                              decoration: TextDecoration.underline,
-                            ),
-                          ),
-                        )
-                      )
-                  ),
-
+                          ))),
                 ],
               ),
             ),
@@ -185,17 +183,10 @@ class _MapUIStatecustom extends State<MapUIcustom> {
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
-
         backgroundColor: Colors.transparent,
         title: Text(
           //LocaleKeys.maps_title.tr(),
-          "MAPS TITLE",
-          style: GoogleFonts.prozaLibre(
-            color: const Color(0xffe97d47),
-            fontSize: 20,
-            fontWeight: FontWeight.w600,
-            height: 1.355,
-          ),
+          "Doctor Locations",
         ),
       ),
       body: Stack(

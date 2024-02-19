@@ -183,6 +183,15 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       ],
                     ),
                   ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Divider(
+                    height: 1,
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
                   GestureDetector(
                     onTap: () => Navigator.push(
                         context,
