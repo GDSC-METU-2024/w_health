@@ -1,4 +1,4 @@
-# W-Health README
+# W-Health
 ![Alt text](README_assets/logo.jpeg)
 ## Project Overview
 
@@ -13,8 +13,8 @@ W-Health addresses significant barriers obstructing women's access to essential 
 Our project aligns with United Nations' Sustainable Development Goal 5: Gender Equality, focusing on targets 5.6.1 and 5.6.2 for women's decision-making autonomy in healthcare and equal access to sexual and reproductive health services. Additionally, we contribute to Goal 3: Good Health and Well-being, targeting 3.1.1 and 3.3.1 to reduce maternal mortality and end the AIDS epidemic.
 
 <div style="display: flex; justify-content: space-between;">
-    <img src="README_assets/E_GIF_03.gif" alt="Image 1" style="width: 49%;">
-    <img src="README_assets/E_GIF_05.gif" alt="Image 2" style="width: 49%;">
+    <img src="README_assets/E_GIF_03.gif" alt="Image 1" style="width: 30%;">
+    <img src="README_assets/E_GIF_05.gif" alt="Image 2" style="width: 30%;">
 </div>
 
 
