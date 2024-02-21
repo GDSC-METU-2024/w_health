@@ -57,3 +57,18 @@ We plan to enhance the medication tracking feature, integrate period cycle monit
 The chosen technical architecture, including Flutter, Firebase, Gemini, and Google Maps API, provides a solid foundation for scalability. Minor adjustments and regular optimizations will be implemented to support a growing user base.
 
 Feel free to explore our code and contribute to the W-Health project!
+
+
+# How To Run/Test The App?
+
+## Download APK
+
+[DOWNLOAD LINK](https://drive.google.com/file/d/1hpBfges6JHgr1CZL4NYqNlwgPrnSNZcJ/view?usp=drive_link)
+
+You can download our apk from link or from apk_app folder in our repo. 
+Please use **Android**.
+
+## RUN
+
+You can run the code directly in your emulator or edge device. 
+Please make sure you are using **Android** 

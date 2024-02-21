@@ -1,0 +1,12 @@
+net.wolverinebeach.flutter_timezone-jetified-annotation-experimental-1.1.0-0 C:\Users\OVAK\.gradle\caches\transforms-3\3795200b4ef80330da39fee63b1e3f99\transformed\jetified-annotation-experimental-1.1.0\res
+net.wolverinebeach.flutter_timezone-jetified-window-java-1.0.0-beta04-1 C:\Users\OVAK\.gradle\caches\transforms-3\4f8a10da11d41b9ccabff01515190014\transformed\jetified-window-java-1.0.0-beta04\res
+net.wolverinebeach.flutter_timezone-core-1.6.0-2 C:\Users\OVAK\.gradle\caches\transforms-3\ae42e6c01585f28a5adeac7499fca147\transformed\core-1.6.0\res
+net.wolverinebeach.flutter_timezone-jetified-window-1.0.0-beta04-3 C:\Users\OVAK\.gradle\caches\transforms-3\fa8aad42c825af1f34f93ab9a34c8ecb\transformed\jetified-window-1.0.0-beta04\res
+net.wolverinebeach.flutter_timezone-pngs-4 C:\Users\OVAK\AndroidStudioProjects\w_health\build\flutter_timezone\generated\res\pngs\release
+net.wolverinebeach.flutter_timezone-resValues-5 C:\Users\OVAK\AndroidStudioProjects\w_health\build\flutter_timezone\generated\res\resValues\release
+net.wolverinebeach.flutter_timezone-rs-6 C:\Users\OVAK\AndroidStudioProjects\w_health\build\flutter_timezone\generated\res\rs\release
+net.wolverinebeach.flutter_timezone-mergeReleaseResources-7 C:\Users\OVAK\AndroidStudioProjects\w_health\build\flutter_timezone\intermediates\incremental\release\mergeReleaseResources\merged.dir
+net.wolverinebeach.flutter_timezone-mergeReleaseResources-8 C:\Users\OVAK\AndroidStudioProjects\w_health\build\flutter_timezone\intermediates\incremental\release\mergeReleaseResources\stripped.dir
+net.wolverinebeach.flutter_timezone-merged_res-9 C:\Users\OVAK\AndroidStudioProjects\w_health\build\flutter_timezone\intermediates\merged_res\release
+net.wolverinebeach.flutter_timezone-main-10 C:\Users\OVAK\AppData\Local\Pub\Cache\hosted\pub.dev\flutter_timezone-1.0.8\android\src\main\res
+net.wolverinebeach.flutter_timezone-release-11 C:\Users\OVAK\AppData\Local\Pub\Cache\hosted\pub.dev\flutter_timezone-1.0.8\android\src\release\res

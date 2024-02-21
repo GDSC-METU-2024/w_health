@@ -1,0 +1,7 @@
+#Wed Feb 21 21:37:49 TRT 2024
+base.1=C\:\\Users\\OVAK\\AndroidStudioProjects\\w_health\\build\\app\\intermediates\\desugar_lib_dex\\release\\classes1000.dex
+path.1=classes1000.dex
+base.0=C\:\\Users\\OVAK\\AndroidStudioProjects\\w_health\\build\\app\\intermediates\\dex\\release\\minifyReleaseWithR8\\classes.dex
+renamed.1=classes2.dex
+renamed.0=classes.dex
+path.0=classes.dex

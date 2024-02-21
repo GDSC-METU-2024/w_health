@@ -1,0 +1,167 @@
+-keep class java.util.Spliterator
+-keep class java.util.function.BiConsumer
+-keep class java.util.function.BiFunction
+-keep class java.util.function.Consumer
+-keep class java.util.function.Function
+-keep class java.util.function.IntFunction
+-keep class java.util.function.Predicate
+-keep class java.util.function.UnaryOperator
+-keep class java.util.stream.Stream
+-keep class j$.util.Collection { *; }
+-keep class j$.util.Iterator { *; }
+-keep class j$.util.List { *; }
+-keep class j$.util.Map$Entry { *; }
+-keep class j$.util.Map { *; }
+-keep class j$.util.Set { *; }
+-keep class j$.lang.Iterable$-CC {
+    void $default$forEach(java.lang.Iterable, j$.util.function.Consumer);
+}
+-keep class j$.time.DayOfWeek
+-keep class j$.time.Instant {
+    j$.time.OffsetDateTime atOffset(j$.time.ZoneOffset);
+    long toEpochMilli();
+}
+-keep class j$.time.LocalDateTime {
+    java.lang.String format(j$.time.format.DateTimeFormatter);
+    j$.time.LocalDateTime parse(java.lang.CharSequence);
+    j$.time.LocalDateTime plusDays(long);
+    j$.time.LocalDateTime plusWeeks(long);
+}
+-keep class j$.time.OffsetDateTime {
+    j$.time.LocalDateTime toLocalDateTime();
+}
+-keep class j$.time.ZoneId {
+    java.util.Set getAvailableZoneIds();
+    java.lang.String getId();
+    j$.time.ZoneId of(java.lang.String);
+    j$.time.ZoneId systemDefault();
+}
+-keep class j$.time.ZoneOffset {
+    j$.time.ZoneOffset UTC;
+}
+-keep class j$.time.ZonedDateTime {
+    int getDayOfMonth();
+    j$.time.DayOfWeek getDayOfWeek();
+    int getHour();
+    int getMinute();
+    int getMonthValue();
+    int getNano();
+    int getSecond();
+    int getYear();
+    boolean isBefore(j$.time.chrono.ChronoZonedDateTime);
+    j$.time.ZonedDateTime now(j$.time.ZoneId);
+    j$.time.ZonedDateTime of(int, int, int, int, int, int, int, j$.time.ZoneId);
+    j$.time.ZonedDateTime of(j$.time.LocalDateTime, j$.time.ZoneId);
+    j$.time.ZonedDateTime plusDays(long);
+    j$.time.Instant toInstant();
+}
+-keep class j$.time.chrono.ChronoZonedDateTime
+-keep class j$.time.format.DateTimeFormatter {
+    j$.time.format.DateTimeFormatter ISO_LOCAL_DATE;
+    j$.time.format.DateTimeFormatter ISO_LOCAL_DATE_TIME;
+    java.lang.String format(j$.time.temporal.TemporalAccessor);
+}
+-keep class j$.time.temporal.TemporalAccessor
+-keep class j$.util.Collection$-CC {
+    j$.util.stream.Stream $default$parallelStream(java.util.Collection);
+    boolean $default$removeIf(java.util.Collection, j$.util.function.Predicate);
+    j$.util.stream.Stream $default$stream(java.util.Collection);
+    java.lang.Object[] $default$toArray(java.util.Collection, j$.util.function.IntFunction);
+}
+-keep class j$.util.Collection$-EL {
+    j$.util.stream.Stream stream(java.util.Collection);
+}
+-keep class j$.util.DateRetargetClass {
+    j$.time.Instant toInstant(java.util.Date);
+}
+-keep class j$.util.DesugarCollections {
+    java.util.Map synchronizedMap(java.util.Map);
+}
+-keep class j$.util.DesugarTimeZone {
+    java.util.TimeZone getTimeZone(java.lang.String);
+}
+-keep class j$.util.Iterator$-CC {
+    void $default$forEachRemaining(java.util.Iterator, j$.util.function.Consumer);
+}
+-keep class j$.util.List$-CC {
+    void $default$replaceAll(java.util.List, j$.util.function.UnaryOperator);
+    void $default$sort(java.util.List, java.util.Comparator);
+}
+-keep class j$.util.Map$-CC {
+    java.lang.Object $default$compute(java.util.Map, java.lang.Object, j$.util.function.BiFunction);
+    java.lang.Object $default$computeIfAbsent(java.util.Map, java.lang.Object, j$.util.function.Function);
+    java.lang.Object $default$computeIfPresent(java.util.Map, java.lang.Object, j$.util.function.BiFunction);
+    void $default$forEach(java.util.Map, j$.util.function.BiConsumer);
+    java.lang.Object $default$merge(java.util.Map, java.lang.Object, java.lang.Object, j$.util.function.BiFunction);
+    java.lang.Object $default$putIfAbsent(java.util.Map, java.lang.Object, java.lang.Object);
+    boolean $default$remove(java.util.Map, java.lang.Object, java.lang.Object);
+    java.lang.Object $default$replace(java.util.Map, java.lang.Object, java.lang.Object);
+    boolean $default$replace(java.util.Map, java.lang.Object, java.lang.Object, java.lang.Object);
+    void $default$replaceAll(java.util.Map, j$.util.function.BiFunction);
+}
+-keep class j$.util.Map$-EL {
+    java.lang.Object getOrDefault(java.util.Map, java.lang.Object, java.lang.Object);
+}
+-keep class j$.util.Spliterator$Wrapper {
+    java.util.Spliterator convert(j$.util.Spliterator);
+}
+-keep class j$.util.Spliterator
+-keep class j$.util.Spliterators {
+    j$.util.Spliterator spliterator(java.util.Collection, int);
+}
+-keep class j$.util.concurrent.ConcurrentHashMap {
+    void <init>();
+    void <init>(int, float, int);
+    boolean containsKey(java.lang.Object);
+    java.lang.Object get(java.lang.Object);
+    boolean isEmpty();
+    java.lang.Object put(java.lang.Object, java.lang.Object);
+    java.lang.Object putIfAbsent(java.lang.Object, java.lang.Object);
+    java.lang.Object remove(java.lang.Object);
+    boolean remove(java.lang.Object, java.lang.Object);
+}
+-keep class j$.util.concurrent.ThreadLocalRandom {
+    j$.util.concurrent.ThreadLocalRandom current();
+}
+-keep class j$.util.function.BiConsumer$VivifiedWrapper {
+    j$.util.function.BiConsumer convert(java.util.function.BiConsumer);
+}
+-keep class j$.util.function.BiConsumer
+-keep class j$.util.function.BiFunction$VivifiedWrapper {
+    j$.util.function.BiFunction convert(java.util.function.BiFunction);
+}
+-keep class j$.util.function.BiFunction
+-keep class j$.util.function.Consumer$-CC {
+    j$.util.function.Consumer $default$andThen(j$.util.function.Consumer, j$.util.function.Consumer);
+}
+-keep class j$.util.function.Consumer$VivifiedWrapper {
+    j$.util.function.Consumer convert(java.util.function.Consumer);
+}
+-keep class j$.util.function.Consumer { *; }
+-keep class j$.util.function.Function$VivifiedWrapper {
+    j$.util.function.Function convert(java.util.function.Function);
+}
+-keep class j$.util.function.Function
+-keep class j$.util.function.IntFunction$VivifiedWrapper {
+    j$.util.function.IntFunction convert(java.util.function.IntFunction);
+}
+-keep class j$.util.function.IntFunction
+-keep class j$.util.function.Predicate$-CC {
+    j$.util.function.Predicate $default$and(j$.util.function.Predicate, j$.util.function.Predicate);
+    j$.util.function.Predicate $default$negate(j$.util.function.Predicate);
+    j$.util.function.Predicate $default$or(j$.util.function.Predicate, j$.util.function.Predicate);
+}
+-keep class j$.util.function.Predicate$VivifiedWrapper {
+    j$.util.function.Predicate convert(java.util.function.Predicate);
+}
+-keep class j$.util.function.Predicate { *; }
+-keep class j$.util.function.UnaryOperator$VivifiedWrapper {
+    j$.util.function.UnaryOperator convert(java.util.function.UnaryOperator);
+}
+-keep class j$.util.function.UnaryOperator
+-keep class j$.util.stream.Stream$Wrapper {
+    java.util.stream.Stream convert(j$.util.stream.Stream);
+}
+-keep class j$.util.stream.Stream {
+    boolean anyMatch(j$.util.function.Predicate);
+}

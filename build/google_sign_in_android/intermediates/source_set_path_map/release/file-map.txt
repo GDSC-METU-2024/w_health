@@ -1,0 +1,15 @@
+io.flutter.plugins.googlesignin.google_sign_in_android-jetified-play-services-basement-18.2.0-0 C:\Users\OVAK\.gradle\caches\transforms-3\30cb6f6210c6f10769db0ca1144fe992\transformed\jetified-play-services-basement-18.2.0\res
+io.flutter.plugins.googlesignin.google_sign_in_android-jetified-annotation-experimental-1.1.0-1 C:\Users\OVAK\.gradle\caches\transforms-3\3795200b4ef80330da39fee63b1e3f99\transformed\jetified-annotation-experimental-1.1.0\res
+io.flutter.plugins.googlesignin.google_sign_in_android-jetified-window-java-1.0.0-beta04-2 C:\Users\OVAK\.gradle\caches\transforms-3\4f8a10da11d41b9ccabff01515190014\transformed\jetified-window-java-1.0.0-beta04\res
+io.flutter.plugins.googlesignin.google_sign_in_android-jetified-play-services-auth-20.7.0-3 C:\Users\OVAK\.gradle\caches\transforms-3\602aa5d15a13836eb4025443472293d2\transformed\jetified-play-services-auth-20.7.0\res
+io.flutter.plugins.googlesignin.google_sign_in_android-core-1.6.0-4 C:\Users\OVAK\.gradle\caches\transforms-3\ae42e6c01585f28a5adeac7499fca147\transformed\core-1.6.0\res
+io.flutter.plugins.googlesignin.google_sign_in_android-jetified-play-services-base-18.0.1-5 C:\Users\OVAK\.gradle\caches\transforms-3\c7232b6ce4e188bed1222fb6e790465b\transformed\jetified-play-services-base-18.0.1\res
+io.flutter.plugins.googlesignin.google_sign_in_android-jetified-window-1.0.0-beta04-6 C:\Users\OVAK\.gradle\caches\transforms-3\fa8aad42c825af1f34f93ab9a34c8ecb\transformed\jetified-window-1.0.0-beta04\res
+io.flutter.plugins.googlesignin.google_sign_in_android-pngs-7 C:\Users\OVAK\AndroidStudioProjects\w_health\build\google_sign_in_android\generated\res\pngs\release
+io.flutter.plugins.googlesignin.google_sign_in_android-resValues-8 C:\Users\OVAK\AndroidStudioProjects\w_health\build\google_sign_in_android\generated\res\resValues\release
+io.flutter.plugins.googlesignin.google_sign_in_android-rs-9 C:\Users\OVAK\AndroidStudioProjects\w_health\build\google_sign_in_android\generated\res\rs\release
+io.flutter.plugins.googlesignin.google_sign_in_android-mergeReleaseResources-10 C:\Users\OVAK\AndroidStudioProjects\w_health\build\google_sign_in_android\intermediates\incremental\release\mergeReleaseResources\merged.dir
+io.flutter.plugins.googlesignin.google_sign_in_android-mergeReleaseResources-11 C:\Users\OVAK\AndroidStudioProjects\w_health\build\google_sign_in_android\intermediates\incremental\release\mergeReleaseResources\stripped.dir
+io.flutter.plugins.googlesignin.google_sign_in_android-merged_res-12 C:\Users\OVAK\AndroidStudioProjects\w_health\build\google_sign_in_android\intermediates\merged_res\release
+io.flutter.plugins.googlesignin.google_sign_in_android-main-13 C:\Users\OVAK\AppData\Local\Pub\Cache\hosted\pub.dev\google_sign_in_android-6.1.21\android\src\main\res
+io.flutter.plugins.googlesignin.google_sign_in_android-release-14 C:\Users\OVAK\AppData\Local\Pub\Cache\hosted\pub.dev\google_sign_in_android-6.1.21\android\src\release\res
