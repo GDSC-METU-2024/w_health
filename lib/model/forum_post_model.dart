@@ -153,7 +153,7 @@ class _ForumPostState extends State<ForumPost> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   SizedBox(
-                    width: 150,
+                    width: 200,
                     child: Text(widget.message),
                   ),
                   const SizedBox(
