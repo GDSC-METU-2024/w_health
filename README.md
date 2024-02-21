@@ -1,5 +1,5 @@
 # W-Health README
-
+![Alt text](README_assets/logo.jpeg)
 ## Project Overview
 
 W-Health is a comprehensive healthcare app designed to empower women in navigating their healthcare journey. Our solution includes features like a supportive forum for sharing experiences, an intelligent AI assistant providing personalized health guidance, a convenient doctor-finding tool, and an educational hub offering comprehensive health information. The goal is to foster a community-driven approach to women's health and well-being, breaking down barriers and promoting gender equality in healthcare.
@@ -12,6 +12,12 @@ W-Health addresses significant barriers obstructing women's access to essential 
 
 Our project aligns with United Nations' Sustainable Development Goal 5: Gender Equality, focusing on targets 5.6.1 and 5.6.2 for women's decision-making autonomy in healthcare and equal access to sexual and reproductive health services. Additionally, we contribute to Goal 3: Good Health and Well-being, targeting 3.1.1 and 3.3.1 to reduce maternal mortality and end the AIDS epidemic.
 
+<div style="display: flex; justify-content: space-between;">
+    <img src="README_assets/E_GIF_03.gif" alt="Image 1" style="width: 49%;">
+    <img src="README_assets/E_GIF_05.gif" alt="Image 2" style="width: 49%;">
+</div>
+
+
 ## Technical Architecture
 
 ### Components
@@ -19,6 +25,13 @@ Our project aligns with United Nations' Sustainable Development Goal 5: Gender E
 - **Backend:** Firebase for well-organized databases and real-time synchronization.
 - **AI Chatbot:** Gemini for personalized health guidance.
 - **Location Services:** Google Maps API for doctor-finding and user location.
+
+<div style="display: flex; justify-content: space-between;">
+    <img src="README_assets/flutter.png" alt="Image 2" style="width: 10%;">
+    <img src="README_assets/firebase_logo_icon_171157.png" alt="Image 1" style="width: 10%;">
+    <img src="README_assets/Gemini-Logo.png" alt="Image 4" style="width: 22%;">
+    <img src="README_assets/GoogleMaps-Icon-alone-1.webp" alt="Image 5" style="width: 15%;">
+</div>
 
 ### Products and Platforms
 - **Flutter:** Chosen for its cross-platform capabilities and user-friendly features.
