@@ -130,7 +130,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     ),
                   ),
                   Positioned(
-                    left: 118 * fem,
+                    left: 124 * fem,
                     top: 265 * fem,
                     child: Align(
                       child: Text(
@@ -144,7 +144,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     ),
                   ),
                   Positioned(
-                    left: 140 * fem,
+                    left: 160 * fem,
                     top: 240 * fem,
                     child: Align(
                       child: Text(
@@ -201,7 +201,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
                         Icon(Icons.medical_services_outlined),
-                        Text("My medicines"),
+                        Text("My Medicines"),
                         Icon(Icons.arrow_forward_ios)
                       ],
                     ),

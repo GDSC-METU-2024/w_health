@@ -129,7 +129,7 @@ class _UserPostsPageState extends State<UserPostsPage> {
                                 const SizedBox(
                                   height: 15.0,
                                 ),
-                                Text('No posts available.'),
+                                Text('End of posts.'),
                                 const SizedBox(
                                   height: 15.0,
                                 )
