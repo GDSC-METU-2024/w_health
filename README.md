@@ -69,7 +69,6 @@ Or You can scan the QR Code.
 
 ![QR_Code](README_assets/QR_Code.png)
 
-You can download our apk from link or from apk_app folder in our repo. 
 Please use **Android**.
 
 ## RUN
