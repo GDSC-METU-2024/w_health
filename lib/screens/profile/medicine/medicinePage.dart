@@ -30,7 +30,6 @@ class _MedicinePageState extends State<MedicinePage> {
             ElevatedButton.icon(
                 onPressed: (){
                   LocalNotifications.showSimpleNotifaction(title: 'wow', body: 'simple', payload: 'ben şok');
-
                 },
                 icon: Icon(Icons.notification_add),
                 label: Text('Simple')

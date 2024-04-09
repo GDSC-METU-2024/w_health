@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:w_health/screens/profile/IDverify/id_intro.dart';
 import 'package:w_health/screens/profile/medicine/medicinePage.dart';
 import 'package:w_health/screens/profile/posts/user_posts.dart';
 import 'package:w_health/utils/utils.dart';
@@ -269,13 +270,19 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   SizedBox(
                     height: 20,
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      Icon(Icons.verified_user_outlined),
-                      Text("Verify Your Account"),
-                      Icon(Icons.arrow_forward_ios)
-                    ],
+                  GestureDetector(
+                    onTap: () => Navigator.push(
+                        context,
+                        CupertinoPageRoute(
+                            builder: (context) => IDIntro())),
+                    child: const Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        Icon(Icons.verified_user_outlined),
+                        Text("Verify Your Account"),
+                        Icon(Icons.arrow_forward_ios)
+                      ],
+                    ),
                   ),
                   SizedBox(
                     height: 20,
