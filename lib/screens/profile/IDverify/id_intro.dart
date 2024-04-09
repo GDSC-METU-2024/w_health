@@ -1,4 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:w_health/screens/profile/IDverify/id_scan.dart';
 import 'package:w_health/utils/utils.dart';
 
 class IDIntro extends StatefulWidget {
@@ -86,7 +88,7 @@ class _IDIntroState extends State<IDIntro> {
                           children: [
                             SizedBox(height: 20,),
                             Text(
-                              "Verifying your identity adds credibility to your profile. Other users are more likely to trust the information you share, whether it's personal experiences in forums or recommendations for healthcare professionals.",
+                              "Verifying your identity adds credibility to your profile. \n Other users are more likely to trust the information you share, whether it's personal experiences in forums or recommendations for healthcare professionals.",
                               textAlign: TextAlign.center,
                               style: SafeGoogleFont(
                                 'Poppins',
@@ -139,9 +141,10 @@ class _IDIntroState extends State<IDIntro> {
                           ),
                         ),
                       ),
-                      onTap: (){
-                        print("verify");
-                      },
+                      onTap: ()=> Navigator.push(
+                          context,
+                          CupertinoPageRoute(
+                              builder: (context) => IDScan())),
                     ),
                   ),
                 ],
