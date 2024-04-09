@@ -1,5 +1,7 @@
 import 'dart:convert';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:blinkid_flutter/microblink_scanner.dart';
@@ -18,6 +20,14 @@ class _IDScanState extends State<IDScan> {
   String _fullDocumentFrontImageBase64 = "";
   String _fullDocumentBackImageBase64 = "";
   String _faceImageBase64 = "";
+  final user = FirebaseAuth.instance.currentUser!;
+  final FirebaseFirestore db = FirebaseFirestore.instance;
+
+  Future<void> update() async{
+    DocumentReference document = db.collection('Person').doc(user.uid);
+    await document.update({'verified': true});
+  }
+
   Future<void> scan() async {
     String license;
     // Set the license key depending on the target platform you are building for.
@@ -209,6 +219,7 @@ class _IDScanState extends State<IDScan> {
     double fem = MediaQuery.of(context).size.width / baseWidth;
 
     Future<void> popUp() {
+
       return showCupertinoDialog(
         context: context,
         builder: (context) => AlertDialog(
@@ -281,6 +292,7 @@ class _IDScanState extends State<IDScan> {
               context,
               CupertinoPageRoute(
               builder: (context) => ProfileScreen()));
+          update();
           popUp();
         }
       );

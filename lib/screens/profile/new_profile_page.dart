@@ -18,6 +18,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
   final user = FirebaseAuth.instance.currentUser!;
   final FirebaseFirestore db = FirebaseFirestore.instance;
   String username = "";
+  bool verified = false;
 
   void firebaseDocument() async {
     var document = await db.collection('Person').doc(user.uid).get();
@@ -26,6 +27,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
       setState(() {
         String a = value!['name'];
         username = a;
+        verified = value!['verified']??false;
       });
     }
   }
@@ -114,48 +116,45 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       ),
                     ),
                   ),
-                  Positioned(
-                    // avatar07MHu (111:300)
-                    left: 141 * fem,
-                    top: 75 * fem,
-                    child: Align(
-                      child: SizedBox(
-                        width: 150 * fem,
-                        height: 150 * fem,
-                        child: Image.asset(
-                          'assets/page-1/images/avatar07.png',
+                  Align(
+                    child: Column(
+                      children: [
+                        SizedBox(height: 75,),
+                        SizedBox(
                           width: 150 * fem,
                           height: 150 * fem,
+                          child: Image.asset(
+                            'assets/page-1/images/avatar07.png',
+                            width: 150 * fem,
+                            height: 150 * fem,
+                          ),
                         ),
-                      ),
-                    ),
-                  ),
-                  Positioned(
-                    left: 118 * fem,
-                    top: 265 * fem,
-                    child: Align(
-                      child: Text(
-                        user.email!,
-                        style: TextStyle(
-                          fontFamily: "Raleway",
-                          fontWeight: FontWeight.bold,
-                          color: Theme.of(context).colorScheme.tertiary,
+                        SizedBox(height: 20,),
+                        Text(
+                          user.email!,
+                          style: TextStyle(
+                            fontFamily: "Raleway",
+                            fontWeight: FontWeight.bold,
+                            color: Theme.of(context).colorScheme.tertiary,
+                          ),
                         ),
-                      ),
-                    ),
-                  ),
-                  Positioned(
-                    left: 140 * fem,
-                    top: 240 * fem,
-                    child: Align(
-                      child: Text(
-                        username,
-                        style: TextStyle(
-                          fontFamily: "Raleway",
-                          fontWeight: FontWeight.bold,
-                          color: Theme.of(context).colorScheme.tertiary,
+                        SizedBox(height: 10,),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              username,
+                              style: TextStyle(
+                                fontFamily: "Raleway",
+                                fontWeight: FontWeight.bold,
+                                color: Theme.of(context).colorScheme.tertiary,
+                              ),
+                            ),
+                            SizedBox(width: 5,),
+                            Icon(verified ? Icons.verified : Icons.verified_outlined),
+                          ],
                         ),
-                      ),
+                      ],
                     ),
                   ),
                 ],
