@@ -1,7 +1,9 @@
 import 'dart:convert';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:blinkid_flutter/microblink_scanner.dart';
+import 'package:w_health/screens/profile/new_profile_page.dart';
 import 'package:w_health/utils/utils.dart';
 
 class IDScan extends StatefulWidget {
@@ -206,6 +208,35 @@ class _IDScanState extends State<IDScan> {
     double baseWidth = 430;
     double fem = MediaQuery.of(context).size.width / baseWidth;
 
+    Future<void> popUp() {
+      return showCupertinoDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+          title: const Text(
+            "Your account has been successfully verified!",
+            style: TextStyle(fontSize: 17),
+          ),
+          shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(
+              Radius.circular(10),
+            ),
+          ),
+          content: Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              InkWell(
+                onTap: () => Navigator.pop(context),
+                child: Text(
+                  "Ok",
+                  style: TextStyle(color: lilia),
+                ),
+              ),
+            ],
+          ),
+        ),
+      );
+    }
+
     Widget confirmButton = Container();
     if (_fullDocumentFrontImageBase64 != null &&
         _fullDocumentFrontImageBase64 != "") {
@@ -246,8 +277,12 @@ class _IDScanState extends State<IDScan> {
           ),
         ),
         onTap: (){
-
-        },
+          Navigator.push(
+              context,
+              CupertinoPageRoute(
+              builder: (context) => ProfileScreen()));
+          popUp();
+        }
       );
     }
 
