@@ -10,6 +10,7 @@ class ForumService {
   Future<Report> addStatus(
     String status,
     String user,
+    bool verified,
     String category,
     List<String> likes,
     DateTime createdAt,
@@ -20,6 +21,7 @@ class ForumService {
     var documentRef = await ref.add({
       'status': status,
       'user': user,
+      'verified': verified,
       'userToken': token,
       'category': category,
       'createdAt': createdAt,
@@ -30,6 +32,7 @@ class ForumService {
       postId: documentRef.id,
       status: status,
       user: user,
+      verified: verified,
       userToken: token,
       category: category,
       createdAt: createdAt,
