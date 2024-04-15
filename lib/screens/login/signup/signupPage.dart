@@ -32,6 +32,7 @@ class _SignUpPageState extends State<SignUpPage> {
           nameController.text,
           emailController.text,
           passwordController.text,
+          false,
         );
       } on FirebaseAuthException catch (e) {
         errorMessage(e.code);

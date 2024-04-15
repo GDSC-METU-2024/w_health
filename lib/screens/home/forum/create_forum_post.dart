@@ -2,14 +2,10 @@ import 'dart:async';
 import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:w_health/services/push_notifications.dart';
 import 'package:w_health/utils/CustomSnackBarContent.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:geolocator/geolocator.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:image_picker/image_picker.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
 import '../../../services/forum_service.dart';
 
 class CreatePost extends StatefulWidget {
@@ -23,6 +19,7 @@ class _CreatePostState extends State<CreatePost> {
   final user = FirebaseAuth.instance.currentUser!;
   final FirebaseFirestore db = FirebaseFirestore.instance;
   String name = "";
+  bool verified = false;
   final ForumService _reportService = ForumService();
   final postController = TextEditingController();
   String? selectedCategory;
@@ -46,6 +43,7 @@ class _CreatePostState extends State<CreatePost> {
     if (this.mounted) {
       setState(() {
         name = value!['name'];
+        verified = value!['verified'];
       });
     }
   }
@@ -58,6 +56,7 @@ class _CreatePostState extends State<CreatePost> {
           .addStatus(
         postController.text,
         "$name",
+        verified,
         selectedCategory!,
         [],
         DateTime.now(),

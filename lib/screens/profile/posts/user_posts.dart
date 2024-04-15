@@ -114,6 +114,7 @@ class _UserPostsPageState extends State<UserPostsPage> {
                           item_count += 1;
                           return ForumPost(
                             user: myForumPost['user'],
+                            verified: (myForumPost['verified']?? false),
                             message: myForumPost['status'],
                             time: myForumPost['createdAt'],
                             postId: myForumPost.id,

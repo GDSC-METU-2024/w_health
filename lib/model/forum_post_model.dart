@@ -14,8 +14,10 @@ class ForumPost extends StatefulWidget {
   final Timestamp time;
   final String postId;
   final List<String> likes;
+  final bool verified;
   const ForumPost(
       {Key? key,
+      required this.verified,
       required this.user,
       required this.message,
       required this.time,
@@ -165,6 +167,7 @@ class _ForumPostState extends State<ForumPost> {
                         widget.user,
                         style: TextStyle(color: Colors.grey[500]),
                       ),
+                      widget.verified ? Icon(Icons.verified_rounded) : Icon(Icons.verified_outlined),
                       SizedBox(
                         width: 10,
                       ),

@@ -36,6 +36,7 @@ class _ForumPageState extends State<ForumPage> {
                           return ForumPost(
                             message: post['status'],
                             user: post['user'],
+                            verified: ((post['verified'] == false || post['verified'] == true)? post['verified']:false ),
                             time: post['createdAt'],
                             postId: post.id,
                             likes: List<String>.from(post['likes'] ?? []),
