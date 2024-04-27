@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
@@ -6,7 +7,6 @@ import 'package:w_health/screens/home/doctor_rating/showAllComments.dart';
 import 'package:w_health/utils/doctor_utils/doctor_comment_model.dart';
 import 'package:w_health/utils/doctor_utils/doctor_model.dart';
 import 'package:w_health/utils/progressIndicator.dart';
-
 
 class DoctorDetail extends StatefulWidget {
   DoctorDetail({Key? key, required this.id}) : super(key: key);
@@ -83,9 +83,25 @@ class __DoctorDetailContentState extends State<_DoctorDetailContent> {
   final TextEditingController _commentTextController = TextEditingController();
   late double newRating;
 
+  final user = FirebaseAuth.instance.currentUser!;
+  final FirebaseFirestore db = FirebaseFirestore.instance;
+  String username = "";
+
+  void firebaseDocument() async {
+    var document = await db.collection('Person').doc(user.uid).get();
+    Map<String, dynamic>? value = document.data();
+    if (this.mounted) {
+      setState(() {
+        String a = value!['name'];
+        username = a;
+      });
+    }
+  }
+
   @override
   void initState() {
     super.initState();
+    firebaseDocument();
     newRating = 5;
   }
 
@@ -118,37 +134,39 @@ class __DoctorDetailContentState extends State<_DoctorDetailContent> {
                     ),
                   ),
                   SizedBox(height: 8.0),
-
                   Row(
                     children: [
                       const Expanded(
                         flex: 7,
-                        child:Column(
+                        child: Column(
                           children: [
-                            TRatingProgressIndicator(text:'5',value:1.0),
-                            TRatingProgressIndicator(text:'4',value:0.8),
-                            TRatingProgressIndicator(text:'3',value:0.6),
-                            TRatingProgressIndicator(text:'2',value:0.4),
-                            TRatingProgressIndicator(text:'1',value:0.2),
+                            TRatingProgressIndicator(text: '5', value: 1.0),
+                            TRatingProgressIndicator(text: '4', value: 0.8),
+                            TRatingProgressIndicator(text: '3', value: 0.6),
+                            TRatingProgressIndicator(text: '2', value: 0.4),
+                            TRatingProgressIndicator(text: '1', value: 0.2),
                           ],
                         ),
                       ),
-                      Expanded(flex:3, child:
-                        Column(
+                      Expanded(
+                        flex: 3,
+                        child: Column(
                           children: [
                             Text(
-                              '${(double.parse((double.parse(widget.doctor.Total_Rating) * 100).toStringAsFixed(0)) / 100).toStringAsFixed(1)}',
-                              style: Theme.of(context).textTheme.displayLarge
-                            ),
+                                '${(double.parse((double.parse(widget.doctor.Total_Rating) * 100).toStringAsFixed(0)) / 100).toStringAsFixed(1)}',
+                                style:
+                                    Theme.of(context).textTheme.displayLarge),
                             RatingBar.builder(
-                              initialRating: double.parse(widget.doctor.Total_Rating),
+                              initialRating:
+                                  double.parse(widget.doctor.Total_Rating),
                               itemSize: 20,
                               minRating: 1,
                               direction: Axis.horizontal,
                               wrapAlignment: WrapAlignment.end,
                               allowHalfRating: true,
                               itemCount: 5,
-                              itemPadding: EdgeInsets.symmetric(horizontal: 0.6),
+                              itemPadding:
+                                  EdgeInsets.symmetric(horizontal: 0.6),
                               itemBuilder: (context, _) => Icon(
                                 Icons.star,
                                 color: Colors.amber,
@@ -161,7 +179,6 @@ class __DoctorDetailContentState extends State<_DoctorDetailContent> {
                           ],
                         ),
                       ),
-
                     ],
                   ),
                   SizedBox(
@@ -250,35 +267,36 @@ class __DoctorDetailContentState extends State<_DoctorDetailContent> {
                     height: 15,
                   ),
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children:[
-                    Text(
-                      "Ratings & Reviews (${widget.doctor.User_Rated})",
-                      style: TextStyle(
-                        fontSize: 24.0,
-                        fontWeight: FontWeight.normal,
-                      ),
-                    ),
-                      GestureDetector(
-                        child: Text(
-                          "See All",
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          "Ratings & Reviews (${widget.doctor.User_Rated})",
                           style: TextStyle(
-                            color: Colors.blueAccent,
-                            fontSize: 18.0,
+                            fontSize: 24.0,
+                            fontWeight: FontWeight.normal,
                           ),
                         ),
-                        onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => showAllComments(doctor:widget.doctor,id:widget.id),
+                        GestureDetector(
+                            child: Text(
+                              "See All",
+                              style: TextStyle(
+                                color: Colors.blueAccent,
+                                fontSize: 18.0,
+                              ),
                             ),
-                          );
-                        }
-                      )
-                    ]
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => showAllComments(
+                                      doctor: widget.doctor, id: widget.id),
+                                ),
+                              );
+                            })
+                      ]),
+                  SizedBox(
+                    height: 16,
                   ),
-                  SizedBox(height: 16,),
                   StreamBuilder<QuerySnapshot>(
                       stream: FirebaseFirestore.instance
                           .collection('Doctors')
@@ -294,7 +312,7 @@ class __DoctorDetailContentState extends State<_DoctorDetailContent> {
                           );
                         }
                         final List<DocumentSnapshot> comments =
-                        snapshot.data!.docs.take(3).toList();
+                            snapshot.data!.docs.take(3).toList();
                         return ListView(
                           shrinkWrap: true,
                           physics: const NeverScrollableScrollPhysics(),
@@ -337,7 +355,7 @@ class __DoctorDetailContentState extends State<_DoctorDetailContent> {
         .add(
       {
         "CommentText": commentText,
-        "CommentedBy": "user",
+        "CommentedBy": username,
         "CommentTime": Timestamp.now(),
         "CommentRating": newRating.toString(),
       },
@@ -349,33 +367,43 @@ class __DoctorDetailContentState extends State<_DoctorDetailContent> {
       context: context,
       builder: (context) => AlertDialog(
         title: Text("Add Comment"),
-        content: Column(
-          children: [
-            RatingBar.builder(
-              initialRating: newRating,
-              minRating: 1,
-              direction: Axis.horizontal,
-              allowHalfRating: true,
-              itemCount: 5,
-              itemPadding: EdgeInsets.symmetric(horizontal: 5.0),
-              itemBuilder: (context, _) => Icon(
-                Icons.star,
-                color: Colors.amber,
+        content: Container(
+          height: 200,
+          child: Column(
+            children: [
+              RatingBar.builder(
+                initialRating: newRating,
+                minRating: 1,
+                direction: Axis.horizontal,
+                allowHalfRating: true,
+                itemCount: 5,
+                itemPadding: EdgeInsets.symmetric(horizontal: 5.0),
+                itemBuilder: (context, _) => Icon(
+                  Icons.star,
+                  color: Colors.amber,
+                ),
+                onRatingUpdate: (rating) {
+                  setState(() {
+                    newRating = rating;
+                  });
+                  print(rating);
+                },
               ),
-              onRatingUpdate: (rating) {
-                setState(() {
-                  newRating = rating;
-                });
-                print(rating);
-              },
-            ),
-            TextField(
-              controller: _commentTextController,
-              decoration: InputDecoration(hintText: "Write a comment..."),
-            ),
-          ],
+              TextField(
+                controller: _commentTextController,
+                decoration: InputDecoration(hintText: "Write a comment..."),
+              ),
+            ],
+          ),
         ),
         actions: [
+          TextButton(
+            onPressed: () {
+              Navigator.pop(context);
+              _commentTextController.clear();
+            },
+            child: Text("Cancel"),
+          ),
           TextButton(
             onPressed: () {
               addComment(_commentTextController.text);
@@ -390,13 +418,6 @@ class __DoctorDetailContentState extends State<_DoctorDetailContent> {
               );*/
             },
             child: Text("Post"),
-          ),
-          TextButton(
-            onPressed: () {
-              Navigator.pop(context);
-              _commentTextController.clear();
-            },
-            child: Text("Cancel"),
           ),
         ],
       ),
@@ -425,5 +446,3 @@ class __DoctorDetailContentState extends State<_DoctorDetailContent> {
     });
   }
 }
-
-

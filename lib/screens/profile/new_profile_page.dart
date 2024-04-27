@@ -129,6 +129,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             height: 150 * fem,
                           ),
                         ),
+
                         SizedBox(height: 20,),
                         Text(
                           user.email!,
@@ -153,6 +154,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             SizedBox(width: 5,),
                             Icon(verified ? Icons.verified : Icons.verified_outlined),
                           ],
+
                         ),
                       ],
                     ),
@@ -201,7 +203,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
                         Icon(Icons.medical_services_outlined),
-                        Text("My medicines"),
+                        Text("My Medicines"),
                         Icon(Icons.arrow_forward_ios)
                       ],
                     ),

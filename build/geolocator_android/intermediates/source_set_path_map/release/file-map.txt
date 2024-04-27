@@ -1,0 +1,15 @@
+com.baseflow.geolocator.geolocator_android-jetified-play-services-base-18.1.0-0 C:\Users\OVAK\.gradle\caches\transforms-3\13beb97871bacead349918ab2efad008\transformed\jetified-play-services-base-18.1.0\res
+com.baseflow.geolocator.geolocator_android-jetified-window-java-1.0.0-beta04-1 C:\Users\OVAK\.gradle\caches\transforms-3\4f8a10da11d41b9ccabff01515190014\transformed\jetified-window-java-1.0.0-beta04\res
+com.baseflow.geolocator.geolocator_android-core-1.9.0-2 C:\Users\OVAK\.gradle\caches\transforms-3\85b7bdf0a11e2121e5a233436dc527ac\transformed\core-1.9.0\res
+com.baseflow.geolocator.geolocator_android-lifecycle-runtime-2.3.1-3 C:\Users\OVAK\.gradle\caches\transforms-3\882adfea1b8390ef21897792e9c9395f\transformed\lifecycle-runtime-2.3.1\res
+com.baseflow.geolocator.geolocator_android-jetified-play-services-basement-18.1.0-4 C:\Users\OVAK\.gradle\caches\transforms-3\b98038a8bb5f558b05cc7fc73ca7ad87\transformed\jetified-play-services-basement-18.1.0\res
+com.baseflow.geolocator.geolocator_android-jetified-annotation-experimental-1.3.0-5 C:\Users\OVAK\.gradle\caches\transforms-3\ea98569cbc8d9745f74e7aee5463206c\transformed\jetified-annotation-experimental-1.3.0\res
+com.baseflow.geolocator.geolocator_android-jetified-window-1.0.0-beta04-6 C:\Users\OVAK\.gradle\caches\transforms-3\fa8aad42c825af1f34f93ab9a34c8ecb\transformed\jetified-window-1.0.0-beta04\res
+com.baseflow.geolocator.geolocator_android-pngs-7 C:\Users\OVAK\AndroidStudioProjects\w_health\build\geolocator_android\generated\res\pngs\release
+com.baseflow.geolocator.geolocator_android-resValues-8 C:\Users\OVAK\AndroidStudioProjects\w_health\build\geolocator_android\generated\res\resValues\release
+com.baseflow.geolocator.geolocator_android-rs-9 C:\Users\OVAK\AndroidStudioProjects\w_health\build\geolocator_android\generated\res\rs\release
+com.baseflow.geolocator.geolocator_android-mergeReleaseResources-10 C:\Users\OVAK\AndroidStudioProjects\w_health\build\geolocator_android\intermediates\incremental\release\mergeReleaseResources\merged.dir
+com.baseflow.geolocator.geolocator_android-mergeReleaseResources-11 C:\Users\OVAK\AndroidStudioProjects\w_health\build\geolocator_android\intermediates\incremental\release\mergeReleaseResources\stripped.dir
+com.baseflow.geolocator.geolocator_android-merged_res-12 C:\Users\OVAK\AndroidStudioProjects\w_health\build\geolocator_android\intermediates\merged_res\release
+com.baseflow.geolocator.geolocator_android-main-13 C:\Users\OVAK\AppData\Local\Pub\Cache\hosted\pub.dev\geolocator_android-4.5.0\android\src\main\res
+com.baseflow.geolocator.geolocator_android-release-14 C:\Users\OVAK\AppData\Local\Pub\Cache\hosted\pub.dev\geolocator_android-4.5.0\android\src\release\res

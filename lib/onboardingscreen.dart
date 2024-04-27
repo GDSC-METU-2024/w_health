@@ -63,7 +63,7 @@ class OnBoardingScreen extends StatelessWidget {
                               width: 304.59 * fem,
                               height: 256.72 * fem,
                               child: Image.asset(
-                                'assets/page-1/images/group.png',
+                                'assets/page-1/images/group-skP.png',
                                 width: 304.59 * fem,
                                 height: 256.72 * fem,
                               ),
