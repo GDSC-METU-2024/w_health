@@ -167,7 +167,12 @@ class _ForumPostState extends State<ForumPost> {
                         widget.user,
                         style: TextStyle(color: Colors.grey[500]),
                       ),
-                      widget.verified ? Icon(Icons.verified_rounded) : Icon(Icons.verified_outlined),
+                      SizedBox(
+                        width: 5,
+                      ),
+                      widget.verified
+                          ? Icon(Icons.verified_rounded)
+                          : Icon(Icons.verified_outlined),
                       SizedBox(
                         width: 10,
                       ),

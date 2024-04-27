@@ -6,6 +6,7 @@ import 'package:w_health/screens/login/authPage.dart';
 import 'package:w_health/firebase_options.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:w_health/services/push_notifications.dart';
+import 'package:w_health/wearOS_module/wear_auth.dart';
 import 'package:w_health/wearOS_module/wear_intro.dart';
 
 int? initScreen = 0;
@@ -44,7 +45,7 @@ class MyApp extends StatelessWidget {
         body: LayoutBuilder(
           builder: (context, constraints) {
             if (constraints.maxWidth < 300) {
-              return Intro_Wear();
+              return Wear_Auth();
             } else {
               return AuthPage();
             }

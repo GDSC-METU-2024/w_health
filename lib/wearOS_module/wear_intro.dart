@@ -1,6 +1,8 @@
 import 'package:w_health/wearOS_module/wear_auth.dart';
 import "package:flutter/material.dart";
 
+import '../utils/utils.dart';
+
 class Intro_Wear extends StatefulWidget {
   const Intro_Wear({super.key});
 
@@ -11,35 +13,33 @@ class Intro_Wear extends StatefulWidget {
 class _Intro_WearState extends State<Intro_Wear> {
   @override
   Widget build(BuildContext context) {
+    double baseWidth = 428;
+    double fem = MediaQuery.of(context).size.width / baseWidth;
+    double ffem = fem * 0.97;
     return Scaffold(
-      extendBodyBehindAppBar: true,
-      appBar: AppBar(
-        centerTitle: true,
-        elevation: 0,
-        backgroundColor: Colors.transparent,
-        title: const Text(
-          "Let's Start",
-          style: TextStyle(
-            color: Color(0xffe97d47),
-          ),
-        ),
-      ),
       body: Container(
-          decoration: BoxDecoration(
-              //gradient: LinearGradient(
-              //  colors: [
-              //    Colors.orange,
-              //    Color.fromARGB(255, 245, 203, 141),
-              //  ],
-              //  stops: [0.05,1],
-              //  begin: Alignment.topCenter,
-              //  end: Alignment.bottomCenter
-              //)
-              ),
-          child: SingleChildScrollView(
-              child: SafeArea(
+        child: SingleChildScrollView(
+          child: SafeArea(
             child: Column(
               children: [
+                Padding(
+                  padding: const EdgeInsets.all(20.0),
+                  child: Text(
+                    'Welcome to \n W-Health!',
+                    textAlign: TextAlign.center,
+                    style: SafeGoogleFont(
+                      'Poppins',
+                      fontSize: 40 * ffem,
+                      fontWeight: FontWeight.w500,
+                      height: 1.5 * ffem / fem,
+                      letterSpacing: -0.200000003 * fem,
+                      color: Color(0xff079d49),
+                      decorationColor: Color(0xff324a59),
+                    ),
+                    //style: GoogleFonts.notoSerif(
+                    //    fontSize: 36, fontWeight: FontWeight.bold),
+                  ),
+                ),
                 Padding(
                   padding: const EdgeInsets.only(
                     left: 5.0,
@@ -48,15 +48,24 @@ class _Intro_WearState extends State<Intro_Wear> {
                     bottom: 0,
                   ),
                   child: Image.asset(
-                    'assets/images/hands.png',
+                    'assets/page-1/images/group-skP.png',
                     height: 50,
                   ),
                 ),
                 Padding(
                   padding: const EdgeInsets.all(20.0),
                   child: Text(
-                    'This app is for emergency calls. Please use only when necessary.',
+                    'Share your experiences, ask questions and find support from a community of woman who understand.',
                     textAlign: TextAlign.center,
+                    style: SafeGoogleFont(
+                      'Poppins',
+                      fontSize: 32 * ffem,
+                      fontWeight: FontWeight.w500,
+                      height: 1.5 * ffem / fem,
+                      letterSpacing: -0.200000003 * fem,
+                      color: Color(0xff324a59),
+                      decorationColor: Color(0xff324a59),
+                    ),
                     //style: GoogleFonts.notoSerif(
                     //    fontSize: 36, fontWeight: FontWeight.bold),
                   ),
@@ -74,21 +83,30 @@ class _Intro_WearState extends State<Intro_Wear> {
                     padding: const EdgeInsets.all(10),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(100),
-                      color: Color(0xffe97d47),
+                      color: Color(0xffffc4dd),
                     ),
-                    child: const Text(
+                    child: Text(
                       "Get Started",
-                      style: TextStyle(
-                        color: Colors.white,
-                        // fontWeight: FontWeight.bold,
+                      style: SafeGoogleFont(
+                        'Poppins',
                         fontSize: 16,
+                        fontWeight: FontWeight.w500,
+                        height: 1.5 * ffem / fem,
+                        letterSpacing: -0.200000003 * fem,
+                        color: Colors.white,
+                        decorationColor: Color(0xff324a59),
                       ),
                     ),
                   ),
                 ),
+                SizedBox(
+                  height: 20,
+                )
               ],
             ),
-          ))),
+          ),
+        ),
+      ),
     );
   }
 }

@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:w_health/local_notification/local_notification.dart';
 
-class Medicine {
+class WearMedicine {
   final String name;
   final int period;
   final int id;
   final double gram;
 
-  Medicine({
+  WearMedicine({
     required this.name,
     required this.period,
     required this.id,
@@ -15,17 +15,17 @@ class Medicine {
   });
 }
 
-class MedicineInfoWidget extends StatelessWidget {
-  final Medicine medicine;
+class WearMedicineInfoWidget extends StatelessWidget {
+  final WearMedicine medicine;
 
-  MedicineInfoWidget({required this.medicine});
+  WearMedicineInfoWidget({required this.medicine});
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(10.0),
       child: Container(
-        height: MediaQuery.of(context).size.height * 0.12,
+        height: MediaQuery.of(context).size.height * 0.50,
         width: MediaQuery.of(context).size.width * 0.8,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(15),
@@ -49,8 +49,8 @@ class MedicineInfoWidget extends StatelessWidget {
                           child: Center(
                             child: Image.asset(
                               "assets/medicine/images/medicine.png",
-                              height: MediaQuery.of(context).size.height * 0.03,
-                              width: MediaQuery.of(context).size.height * 0.03,
+                              height: MediaQuery.of(context).size.height * 0.06,
+                              width: MediaQuery.of(context).size.height * 0.06,
                             ),
                           ),
                         ),
@@ -62,15 +62,20 @@ class MedicineInfoWidget extends StatelessWidget {
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text('Name: ${medicine.name}'),
-                            Text('${medicine.gram} g'),
-                          ],
+                        Text(
+                          'Name: ${medicine.name}',
+                          style: TextStyle(fontSize: 10),
+                        ),
+                        Text(
+                          '${medicine.gram} g',
+                          style: TextStyle(fontSize: 10),
                         ),
                         SizedBox(height: 8),
-                        Center(child: Text('Period: ${medicine.period} days')),
+                        Center(
+                            child: Text(
+                          'Period: ${medicine.period} days',
+                          style: TextStyle(fontSize: 10),
+                        )),
                       ],
                     ),
                   ),
@@ -80,14 +85,13 @@ class MedicineInfoWidget extends StatelessWidget {
                       mainAxisSize: MainAxisSize.min,
                       children: <Widget>[
                         IconButton(
-                          iconSize: 40,
+                          iconSize: 20,
                           icon: const Icon(Icons.delete_forever),
                           tooltip: 'Remove alarm',
                           onPressed: () {
                             LocalNotifications.cancel(medicine.id);
                           },
                         ),
-                        Text('Remove'),
                       ],
                     ),
                   ),
