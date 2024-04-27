@@ -44,13 +44,31 @@ Our project aligns with United Nations' Sustainable Development Goal 5: Gender E
 We conducted user testing with diverse groups, receiving feedback on the forum, AI assistant, and doctor-finding features. Improvements were made in forum organization, AI guidance clarity, and doctor profile richness based on user suggestions.
 
 
+## Generativa AI
+
+### Gemini Healthcare Assistant
+Gemini is an innovative healthcare assistant app designed to help users find the best health branch to visit based on their symptoms and personal preferences. Leveraging advanced AI techniques, Gemini offers personalized recommendations tailored to each user's needs, making healthcare navigation easier and more efficient.
+
+### Features
+- Symptom Recognition: Gemini utilizes cutting-edge image recognition technology to analyze user-submitted photos of their symptoms. By simply taking a photo of the affected area, users can receive accurate suggestions for the type of healthcare facility to visit.
+- Personalized Recommendations: Through a combination of user input and AI algorithms, Gemini provides personalized recommendations for healthcare branches based on factors such as location, user preferences, and the severity of symptoms.
+- Chat History: Gemini features a built-in chat history function, allowing users to review past interactions with the assistant. This feature is implemented using local code techniques to ensure privacy and security.
+- Intuitive UI Design: The app boasts a sleek and user-friendly interface, making it easy for users to navigate and access the features they need. From submitting symptom photos to receiving recommendations, every step of the process is designed with the user in mind.
+
 ## Project Impact
 
 Our app transforms women's healthcare experiences by providing a supportive community, personalized guidance, access to healthcare providers, and medication tracking. User feedback and testing demonstrated the effectiveness of our solution in addressing healthcare disparities.
 
-## Future Steps
+## Future Steps (Edit after TOP-100)
 
-We plan to enhance the medication tracking feature, integrate period cycle monitoring, and explore smartwatch compatibility. Partnerships with healthcare providers and community organizations will be pursued to expand our reach and impact.
+- [x] Medication tracking feature (Get's notifications for your periodic medical care)
+- [x] Period cycle monitoring
+- [x] Smartwatch version of W-Health
+
+### Note:
+Partnerships with healthcare providers and community organizations will be pursued to expand our reach and impact.
+
+
 
 ## Scaling Considerations
 
@@ -74,4 +92,5 @@ Please use **Android**.
 ## RUN
 
 You can run the code directly in your emulator or edge device. 
-Please make sure you are using **Android** 
+
+Clone the **repo**, and run the **main** flutter file directly on mobile device or smartwatch.
