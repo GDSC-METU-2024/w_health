@@ -41,12 +41,13 @@ class FirebaseUserAuthentication {
     }
   }
 
-  Future<User?> createPerson(String name, String email, String password) async {
+  Future<User?> createPerson(String name, String email, String password, bool verified) async {
     var user = await _auth.createUserWithEmailAndPassword(
         email: email, password: password);
     await _firestore.collection("Person").doc(user.user?.uid).set({
       'name': name,
       'email': email,
+      'verified': verified,
     });
     return user.user;
   }

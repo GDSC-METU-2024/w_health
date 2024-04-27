@@ -26,6 +26,12 @@
       "languageVersion": "2.18"
     },
     {
+      "name": "blinkid_flutter",
+      "rootUri": "file:///Users/alperenovak/.pub-cache/hosted/pub.dev/blinkid_flutter-6.5.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "boolean_selector",
       "rootUri": "file:///C:/Users/OVAK/AppData/Local/Pub/Cache/hosted/pub.dev/boolean_selector-2.1.1",
       "packageUri": "lib/",
@@ -908,7 +914,8 @@
       "languageVersion": "2.19"
     }
   ],
-  "generated": "2024-02-21T18:27:42.852817Z",
+
+  "generated": "2024-04-09T09:34:43.646838Z",
   "generator": "pub",
   "generatorVersion": "3.3.0"
 }

@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:w_health/screens/profile/IDverify/id_intro.dart';
 import 'package:w_health/screens/profile/medicine/medicinePage.dart';
 import 'package:w_health/screens/profile/posts/user_posts.dart';
 import 'package:w_health/utils/utils.dart';
@@ -17,6 +18,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
   final user = FirebaseAuth.instance.currentUser!;
   final FirebaseFirestore db = FirebaseFirestore.instance;
   String username = "";
+  bool verified = false;
 
   void firebaseDocument() async {
     var document = await db.collection('Person').doc(user.uid).get();
@@ -25,6 +27,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
       setState(() {
         String a = value!['name'];
         username = a;
+        verified = value!['verified']??false;
       });
     }
   }
@@ -113,48 +116,47 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       ),
                     ),
                   ),
-                  Positioned(
-                    // avatar07MHu (111:300)
-                    left: 141 * fem,
-                    top: 75 * fem,
-                    child: Align(
-                      child: SizedBox(
-                        width: 150 * fem,
-                        height: 150 * fem,
-                        child: Image.asset(
-                          'assets/page-1/images/avatar07.png',
+                  Align(
+                    child: Column(
+                      children: [
+                        SizedBox(height: 75,),
+                        SizedBox(
                           width: 150 * fem,
                           height: 150 * fem,
+                          child: Image.asset(
+                            'assets/page-1/images/avatar07.png',
+                            width: 150 * fem,
+                            height: 150 * fem,
+                          ),
                         ),
-                      ),
-                    ),
-                  ),
-                  Positioned(
-                    left: 124 * fem,
-                    top: 265 * fem,
-                    child: Align(
-                      child: Text(
-                        user.email!,
-                        style: TextStyle(
-                          fontFamily: "Raleway",
-                          fontWeight: FontWeight.bold,
-                          color: Theme.of(context).colorScheme.tertiary,
+
+                        SizedBox(height: 20,),
+                        Text(
+                          user.email!,
+                          style: TextStyle(
+                            fontFamily: "Raleway",
+                            fontWeight: FontWeight.bold,
+                            color: Theme.of(context).colorScheme.tertiary,
+                          ),
                         ),
-                      ),
-                    ),
-                  ),
-                  Positioned(
-                    left: 160 * fem,
-                    top: 240 * fem,
-                    child: Align(
-                      child: Text(
-                        username,
-                        style: TextStyle(
-                          fontFamily: "Raleway",
-                          fontWeight: FontWeight.bold,
-                          color: Theme.of(context).colorScheme.tertiary,
+                        SizedBox(height: 10,),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              username,
+                              style: TextStyle(
+                                fontFamily: "Raleway",
+                                fontWeight: FontWeight.bold,
+                                color: Theme.of(context).colorScheme.tertiary,
+                              ),
+                            ),
+                            SizedBox(width: 5,),
+                            Icon(verified ? Icons.verified : Icons.verified_outlined),
+                          ],
+
                         ),
-                      ),
+                      ],
                     ),
                   ),
                 ],
@@ -259,6 +261,29 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       Text("Settings"),
                       Icon(Icons.arrow_forward_ios)
                     ],
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Divider(
+                    height: 1,
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  GestureDetector(
+                    onTap: () => Navigator.push(
+                        context,
+                        CupertinoPageRoute(
+                            builder: (context) => IDIntro())),
+                    child: const Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        Icon(Icons.verified_user_outlined),
+                        Text("Verify Your Account"),
+                        Icon(Icons.arrow_forward_ios)
+                      ],
+                    ),
                   ),
                   SizedBox(
                     height: 20,

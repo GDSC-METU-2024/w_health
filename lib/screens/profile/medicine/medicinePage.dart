@@ -26,11 +26,13 @@ class _MedicinePageState extends State<MedicinePage> {
         child: Column(
           children: [
             ElevatedButton.icon(
+
                 onPressed: () {
                   LocalNotifications.showSimpleNotifaction(
                       title: 'Medicine Reminder',
                       body: 'Don\'t forget to take your medicine',
                       payload: 'ben şok');
+
                 },
                 icon: Icon(Icons.notification_add),
                 label: Text('Simple')),
