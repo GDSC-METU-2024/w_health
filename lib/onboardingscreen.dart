@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/gestures.dart';
 import 'package:w_health/screens/login/loginPage.dart';
 import 'dart:ui';
 import 'package:w_health/utils/utils.dart';
@@ -143,7 +142,7 @@ class OnBoardingScreen extends StatelessWidget {
                                 maxWidth: 400 * fem,
                               ),
                               child: Text(
-                                'Share your experiences, ask questions and find support from a community of woman who understand',
+                                'Share your experiences, ask questions and find support from a community of woman who understand.',
                                 style: SafeGoogleFont(
                                   'Poppins',
                                   fontSize: 16 * ffem,

@@ -74,6 +74,13 @@ dependencies:
   #ID verification
   blinkid_flutter:
 
+  #Wearos
+  wear: ^1.1.0
+  rotary_scrollbar: ^0.1.1
+  watch_connectivity: ^0.1.4+1
+  watch_connectivity_garmin: ^0.1.2
+  #wearable_communicator: ^0.1.1
+
 dev_dependencies:
   flutter_launcher_icons: "^0.13.1"
 
