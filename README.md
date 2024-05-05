@@ -64,7 +64,43 @@ Our app transforms women's healthcare experiences by providing a supportive comm
 - [x] Medication tracking feature (Get's notifications for your periodic medical care)
 - [x] Period cycle monitoring
 - [x] Smartwatch version of W-Health
+- [x] ID verification
 
+Certainly! Here's a draft for the section about ID verification in your README file:
+
+---
+
+## ID Verification for Enhanced Security
+
+In our mobile app project, ensuring a safe and secure environment for our users is paramount. One of the key measures we've implemented to achieve this is ID verification for user accounts. This process not only adds an extra layer of security but also fosters trust and credibility within our community.
+
+### How ID Verification Works
+
+When users sign up for an account on our platform, they are required to undergo a thorough ID verification process. This typically involves providing official identification documents such as a driver's license, passport, or national ID card.
+
+### Benefits of ID Verification
+
+#### 1. Enhanced Security:
+   By verifying the identity of our users, we significantly reduce the risk of fraudulent activities such as fake accounts, impersonation, and account takeovers. This helps create a safer online environment for all members of our community.
+
+##### After Verification & Before Verification
+![image](https://github.com/GDSC-METU-2024/w_health/assets/96688864/3b6c4f83-2eef-4687-b87d-a0217297d045)----------------![image](https://github.com/GDSC-METU-2024/w_health/assets/96688864/101eeb3a-9523-4834-a8e2-e32081e175a3)
+
+
+
+#### 2. Trust and Credibility:
+   ID verification instills trust and credibility within our platform. Users feel more confident engaging in discussions, sharing personal information, and conducting transactions knowing that other members have been vetted through a rigorous verification process.
+
+#### 3. Compliance with Regulations:
+   Depending on the nature of our platform and the regions we operate in, ID verification may also be a legal requirement. By adhering to these regulations, we demonstrate our commitment to operating ethically and responsibly.
+
+### User Privacy and Data Security
+
+We understand the sensitivity of personal information and are dedicated to protecting the privacy and security of our users' data. Our ID verification process is designed with privacy in mind, ensuring that sensitive information is encrypted, stored securely, and accessed only by authorized personnel.
+
+
+
+Feel free to adjust and expand upon this draft to better fit your project and audience! Let me know if you need further assistance.
 ### Note:
 Partnerships with healthcare providers and community organizations will be pursued to expand our reach and impact.
 
