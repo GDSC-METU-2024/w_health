@@ -62,9 +62,9 @@ Our app transforms women's healthcare experiences by providing a supportive comm
 ## Future Steps (Edit after TOP-100)
 
 - [x] Medication tracking feature (Gets notifications for your periodic medical care)
-- [x] Period cycle monitoring
-- [x] Smartwatch version of W-Health
-- [x] ID verification
+- [x] Period cycle monitoring (2nd stage)
+- [x] Smartwatch version of W-Health (2nd stage)
+- [x] ID verification (2nd stage)
 
 
 ### Note:
