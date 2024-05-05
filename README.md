@@ -10,11 +10,11 @@ W-Health addresses significant barriers obstructing women's access to essential 
 
 ## Sustainable Development Goals
 
-Our project aligns with United Nations' Sustainable Development Goal 5: Gender Equality, focusing on targets 5.6.1 and 5.6.2 for women's decision-making autonomy in healthcare and equal access to sexual and reproductive health services. Additionally, we contribute to Goal 3: Good Health and Well-being, targeting 3.1.1 and 3.3.1 to reduce maternal mortality and end the AIDS epidemic.
+Our project aligns with United Nations' Sustainable Development Goal 5: Gender Equality, focusing on targets 5.6.1, which emphasize women's decision-making autonomy in healthcare. Additionally, we're committed to Goal 3: Good Health and Well-being, tackling target 3.7 to facilitate information and education on health. 
 
 <div style="display: flex; justify-content: space-between;">
-    <img src="README_assets/E_GIF_03.gif" alt="Image 1" style="width: 30%;">
-    <img src="README_assets/E_GIF_05.gif" alt="Image 2" style="width: 30%;">
+    <img src="README_assets/E_GIF_03.gif" alt="Image 1" width="300">
+    <img src="README_assets/E_GIF_05.gif" alt="Image 2" width="300">
 </div>
 
 
@@ -44,7 +44,7 @@ Our project aligns with United Nations' Sustainable Development Goal 5: Gender E
 We conducted user testing with diverse groups, receiving feedback on the forum, AI assistant, and doctor-finding features. Improvements were made in forum organization, AI guidance clarity, and doctor profile richness based on user suggestions.
 
 
-## Generativa AI
+## Generative AI
 
 ### Gemini Healthcare Assistant
 Gemini is an innovative healthcare assistant app designed to help users find the best health branch to visit based on their symptoms and personal preferences. Leveraging advanced AI techniques, Gemini offers personalized recommendations tailored to each user's needs, making healthcare navigation easier and more efficient.
@@ -66,9 +66,6 @@ Our app transforms women's healthcare experiences by providing a supportive comm
 - [x] Smartwatch version of W-Health
 - [x] ID verification
 
-Certainly! Here's a draft for the section about ID verification in your README file:
-
----
 
 ## ID Verification for Enhanced Security
 
