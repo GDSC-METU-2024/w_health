@@ -117,16 +117,16 @@ Feel free to explore our code and contribute to the W-Health project!
 
 ## Download APK
 
-[DOWNLOAD LINK](https://drive.google.com/file/d/1hpBfges6JHgr1CZL4NYqNlwgPrnSNZcJ/view?usp=drive_link)
+[DOWNLOAD LINK](https://drive.google.com/file/d/1fVlZtNjj_hEXEYDU4YFSr7eE9c0Y-d7K/view?usp=drive_link)
 
 Or You can scan the QR Code.
 
-![QR_Code](README_assets/QR_Code.png)
+![QR_Code](https://github.com/GDSC-METU-2024/w_health/assets/96688864/662389c4-95a2-4d58-abfd-69582a2a8184)
 
 Please use **Android**.
 
 ## RUN
 
-You can run the code directly in your emulator or edge device. 
+You can run the code directly in your emulator or edge device. Please note that same API's are hidden (Gemini API, Google Maps API, Firebase API etc.). Therefore, you should check the gitignore file and create your own API files to launch our app in your computer. We highly recommend you to download the APK to test our application. 
 
 Clone the **repo**, and run the **main** flutter file directly on mobile device or smartwatch.
