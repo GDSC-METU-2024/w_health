@@ -2,8 +2,10 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:w_health/screens/profile/IDverify/id_intro.dart';
 import 'package:w_health/screens/profile/medicine/medicinePage.dart';
+import 'package:w_health/screens/profile/period_tracker/period_tracker.dart';
 import 'package:w_health/screens/profile/posts/user_posts.dart';
 import 'package:w_health/utils/utils.dart';
 
@@ -209,6 +211,29 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       children: [
                         Icon(Icons.medical_services_outlined),
                         Text("My Medicines"),
+                        Icon(Icons.arrow_forward_ios)
+                      ],
+                    ),
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Divider(
+                    height: 1,
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  GestureDetector(
+                    onTap: () => Navigator.push(
+                        context,
+                        CupertinoPageRoute(
+                            builder: (context) => TrackerScreen())),
+                    child: const Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        Icon(FontAwesomeIcons.notesMedical),
+                        Text("Period Cycle Tracker"),
                         Icon(Icons.arrow_forward_ios)
                       ],
                     ),
