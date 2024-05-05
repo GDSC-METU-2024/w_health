@@ -43,7 +43,7 @@ Our project aligns with United Nations' Sustainable Development Goal 5: Gender E
 
 We conducted user testing with diverse groups, receiving feedback on the forum, AI assistant, and doctor-finding features. Improvements were made in forum organization, AI guidance clarity, and doctor profile richness based on user suggestions.
 
-## Futures
+## Features
 
 ### Forum Page
 Our forum page is more than just a platform for discussion; it's a nurturing environment where individuals come together to find emotional solace, promote mental well-being, and empower each other with valuable knowledge on proactive health measures.
