@@ -61,15 +61,24 @@ Our app transforms women's healthcare experiences by providing a supportive comm
 
 ## Future Steps (Edit after TOP-100)
 
-- [x] Medication tracking feature (Get's notifications for your periodic medical care)
+- [x] Medication tracking feature (Gets notifications for your periodic medical care)
 - [x] Period cycle monitoring
 - [x] Smartwatch version of W-Health
 - [x] ID verification
 
+Feel free to adjust and expand upon this draft to better fit your project and audience! Let me know if you need further assistance.
+### Note:
+Partnerships with healthcare providers and community organizations will be pursued to expand our reach and impact.
 
 ## ID Verification for Enhanced Security
 
 In our mobile app project, ensuring a safe and secure environment for our users is paramount. One of the key measures we've implemented to achieve this is ID verification for user accounts. This process not only adds an extra layer of security but also fosters trust and credibility within our community.
+<div style="display: flex; justify-content: space-between;">
+    <img src="https://github.com/GDSC-METU-2024/w_health/assets/96688864/ff933f0c-894f-43e2-b102-c41f875c6275" alt="Image 2" style="width: 10%;">
+</div>
+
+
+
 
 ### How ID Verification Works
 
@@ -93,13 +102,8 @@ When users sign up for an account on our platform, they are required to undergo 
 
 ### User Privacy and Data Security
 
-We understand the sensitivity of personal information and are dedicated to protecting the privacy and security of our users' data. Our ID verification process is designed with privacy in mind, ensuring that sensitive information is encrypted, stored securely, and accessed only by authorized personnel.
-
-
-
-Feel free to adjust and expand upon this draft to better fit your project and audience! Let me know if you need further assistance.
-### Note:
-Partnerships with healthcare providers and community organizations will be pursued to expand our reach and impact.
+We understand the sensitivity of personal information and are dedicated to protecting the privacy and security of our users' data. We decided to use BlinkID SDK Flutter plugin by @BlinkID. It "seems" trustful for me. Because of privacy and security of data, however, we are not using any data from a scanned ID card, instead we are giving identity badge directly if ID scan is successful.
+Highlight that we *do not use and/or store data* from ID cards
 
 
 
