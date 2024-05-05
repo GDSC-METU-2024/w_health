@@ -29,7 +29,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
       setState(() {
         String a = value!['name'];
         username = a;
-        verified = value!['verified'] ?? false;
+        verified = value!['verified']??false;
       });
     }
   }
@@ -121,9 +121,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   Align(
                     child: Column(
                       children: [
-                        SizedBox(
-                          height: 75,
-                        ),
+                        SizedBox(height: 75,),
                         SizedBox(
                           width: 150 * fem,
                           height: 150 * fem,
@@ -133,9 +131,17 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             height: 150 * fem,
                           ),
                         ),
-                        SizedBox(
-                          height: 10,
+
+                        SizedBox(height: 20,),
+                        Text(
+                          user.email!,
+                          style: TextStyle(
+                            fontFamily: "Raleway",
+                            fontWeight: FontWeight.bold,
+                            color: Theme.of(context).colorScheme.tertiary,
+                          ),
                         ),
+                        SizedBox(height: 10,),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
@@ -147,21 +153,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                 color: Theme.of(context).colorScheme.tertiary,
                               ),
                             ),
-                            SizedBox(
-                              width: 5,
-                            ),
-                            Icon(verified
-                                ? Icons.verified
-                                : Icons.verified_outlined),
+                            SizedBox(width: 5,),
+                            Icon(verified ? Icons.verified : Icons.verified_outlined),
                           ],
-                        ),
-                        Text(
-                          user.email!,
-                          style: TextStyle(
-                            fontFamily: "Raleway",
-                            fontWeight: FontWeight.bold,
-                            color: Theme.of(context).colorScheme.tertiary,
-                          ),
+
                         ),
                       ],
                     ),
@@ -301,30 +296,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   SizedBox(
                     height: 20,
                   ),
-                  /* GestureDetector(
-                    onTap: () => Navigator.push(context,
-                        CupertinoPageRoute(builder: (context) => AddDevice())),
-                    child: const Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        Icon(Icons.watch),
-                        Text("Add Wearable Device"),
-                        Icon(Icons.arrow_forward_ios)
-                      ],
-                    ),
-                  ),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  Divider(
-                    height: 1,
-                  ),
-                  SizedBox(
-                    height: 20,
-                  ), */
                   GestureDetector(
-                    onTap: () => Navigator.push(context,
-                        CupertinoPageRoute(builder: (context) => IDIntro())),
+                    onTap: () => Navigator.push(
+                        context,
+                        CupertinoPageRoute(
+                            builder: (context) => IDIntro())),
                     child: const Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
