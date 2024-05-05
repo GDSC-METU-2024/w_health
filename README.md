@@ -43,13 +43,52 @@ Our project aligns with United Nations' Sustainable Development Goal 5: Gender E
 
 We conducted user testing with diverse groups, receiving feedback on the forum, AI assistant, and doctor-finding features. Improvements were made in forum organization, AI guidance clarity, and doctor profile richness based on user suggestions.
 
+## Futures
 
-## Generative AI
+### Forum Page
+Our forum page is more than just a platform for discussion; it's a nurturing environment where individuals come together to find emotional solace, promote mental well-being, and empower each other with valuable knowledge on proactive health measures.
 
-### Gemini Healthcare Assistant
+#### A Safe Haven for Emotional Support
+In our forum, members find comfort and understanding as they share their experiences, struggles, and triumphs. Whether dealing with mental health challenges, coping with difficult life situations, or seeking encouragement, our community offers a supportive space where everyone is welcomed with empathy and kindness.
+
+#### Promoting Mental Well-being
+We believe in the power of positivity and resilience. Through uplifting conversations, motivational stories, and practical tips, our forum inspires members to prioritize their mental health and cultivate inner strength. Together, we navigate the ups and downs of life, fostering a sense of belonging and camaraderie along the way.
+
+#### An Educational Resource for Health Awareness
+In addition to emotional support, our forum serves as a hub for valuable information on proactive health measures. From discussions on healthy lifestyle choices to expert advice on managing medical conditions, our community empowers members to take charge of their well-being and make informed decisions about their health.
+
+### Doctor-Finding Page
+
+Finding the right healthcare provider just got easier with our comprehensive doctor-finding page. We understand the importance of convenient access to quality healthcare services, and our platform is designed to streamline the process for users.
+
+#### Extensive Range of Doctors
+Our platform boasts an extensive database of healthcare providers, offering a diverse range of specialties to cater to every medical need. Whether you're searching for a primary care physician, a specialist, or a specific type of practitioner, our platform has you covered.
+
+#### Advanced Filtering Options
+To help users find the perfect healthcare provider, we offer advanced filtering options based on specialties and locations. With just a few clicks, users can narrow down their search to find doctors who meet their specific requirements, saving time and effort.
+
+#### Integrated Map Feature
+Visualizing proximity is crucial when choosing a healthcare provider. That's why our platform features an integrated map feature that allows users to see the locations of doctors relative to their own. This visual aid not only enhances the user experience but also helps users make informed decisions about which provider is most convenient for them.
+
+### Medicine Tracker
+
+Our medicine tracker feature is designed to support users in managing their medication schedules effectively. With timely reminders and usage tracking, it empowers individuals to adhere to their treatment plans, leading to improved health outcomes and overall well-being.
+
+#### Timely Reminders
+Never miss a dose again with our timely reminder system. Our app sends notifications to remind users to take their medications at the prescribed times, ensuring that doses are never forgotten and treatments remain on schedule.
+
+#### Better Health Outcomes
+By promoting effective treatment adherence, our medicine tracker feature contributes to better health outcomes. Consistently taking medications as prescribed can lead to improved symptom management, disease control, and overall health, empowering users to live their lives to the fullest.
+
+#### Enhanced Ease of Use with the Watch Version
+For added convenience, our app is also available on smartwatches. The watch version of our app provides an even more accessible and user-friendly experience for medical trackers, allowing users to manage their medication schedules directly from their wrists.
+
+### Generative AI
+
+#### Gemini Healthcare Assistant
 Gemini is an innovative healthcare assistant app designed to help users find the best health branch to visit based on their symptoms and personal preferences. Leveraging advanced AI techniques, Gemini offers personalized recommendations tailored to each user's needs, making healthcare navigation easier and more efficient.
 
-### Features
+#### Features
 - Symptom Recognition: Gemini utilizes cutting-edge image recognition technology to analyze user-submitted photos of their symptoms. By simply taking a photo of the affected area, users can receive accurate suggestions for the type of healthcare facility to visit.
 - Personalized Recommendations: Through a combination of user input and AI algorithms, Gemini provides personalized recommendations for healthcare branches based on factors such as location, user preferences, and the severity of symptoms.
 - Chat History: Gemini features a built-in chat history function, allowing users to review past interactions with the assistant. This feature is implemented using local code techniques to ensure privacy and security.
