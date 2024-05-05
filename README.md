@@ -66,7 +66,7 @@ Our app transforms women's healthcare experiences by providing a supportive comm
 - [x] Smartwatch version of W-Health
 - [x] ID verification
 
-Feel free to adjust and expand upon this draft to better fit your project and audience! Let me know if you need further assistance.
+
 ### Note:
 Partnerships with healthcare providers and community organizations will be pursued to expand our reach and impact.
 
